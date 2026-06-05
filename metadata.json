@@ -1,0 +1,6 @@
+{
+  "name": "ByteDepth",
+  "description": "Premium Web Development for Chartered Accountants, Lawyers, Advisors, and Key Service Professionals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
