@@ -34,6 +34,7 @@ export interface BookingRequest {
   goals: string;
   customDomainReq: boolean;
   designStyle: 'modern-dark' | 'clean-corporate' | 'warm-organic' | 'creative-bold';
+  selectedPlan: 'complete' | 'basic' | 'onetime';
   submittedAt: string;
 }
 

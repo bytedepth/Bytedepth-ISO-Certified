@@ -39,15 +39,15 @@ export default function Hero({ onOpenBooking, onScrollToSection }: HeroProps) {
         </div>
 
         {/* Headings */}
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.1] text-slate-900 tracking-tight max-w-4xl mx-auto mb-6">
-          Professional Web Assets <br />
+        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.15] text-slate-900 tracking-tight max-w-5xl mx-auto mb-6">
+          Best Lead Generation Service For <br />
           <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-            For Industry Experts
+            MBBS Abroad Consultants! 🚀📈
           </span>
         </h1>
 
-        <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
-          We engineer high-converting 1-page business systems for <span className="font-semibold text-slate-800">CAs</span>, <span className="font-semibold text-slate-800">Lawyers</span>, <span className="font-semibold text-slate-800">Consultants</span>, and <span className="font-semibold text-slate-800">Health Professionals</span>. Review your custom demo in <span className="font-bold underline decoration-blue-500 decoration-2 text-blue-600">24-72 hours</span>.
+        <p className="text-base sm:text-lg md:text-xl text-slate-600 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+          We help MBBS Abroad consultancies build a strong, professional presence online—from <span className="font-semibold text-slate-900">high-conversion admission websites</span> to <span className="font-semibold text-slate-900">qualified student lead systems</span>. Attract serious, NEET-qualified aspirants for Russia, Georgia, Uzbekistan, Kyrgyzstan, and Philippines to fill your 2026 batches!
         </p>
 
         {/* Dynamic Trust Points */}
@@ -82,7 +82,7 @@ export default function Hero({ onOpenBooking, onScrollToSection }: HeroProps) {
           </button>
           
           <a 
-            href="https://wa.me/919169677589?text=Hi%20ByteDepth!%20I'd%20like%20to%20discuss%20a%20professional%20web%20asset%20demo."
+            href="https://wa.me/919696775989?text=Hi%20ByteDepth!%20I'm%20an%20MBBS%20Abroad%20Consultant.%20I%20would%20like%20to%20discuss%20a%20high-converting%20student%20recruitment%20web%20system%20and%20professional%20digital%20lead%20gen%20assets%20for%2520my%2520consultancy."
             target="_blank"
             rel="noopener noreferrer"
             className="w-full sm:w-auto bg-white border border-slate-200/80 hover:bg-slate-50 hover:border-slate-300 text-slate-800 px-8 py-4 rounded-xl text-md font-bold transition-all inline-flex items-center justify-center gap-2"
@@ -95,7 +95,7 @@ export default function Hero({ onOpenBooking, onScrollToSection }: HeroProps) {
 
         {/* Small trust assurance subtitle */}
         <p className="text-xs text-slate-400 mt-5 leading-normal">
-          No complicated contracts. Remaining balance of ₹9,499 payable only after you authorize and approve your live mockup.
+          No complicated contracts. Plan retainer balance payable only after you authorize and approve your live mockup.
         </p>
 
         {/* Quick link trigger */}

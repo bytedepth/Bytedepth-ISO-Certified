@@ -15,7 +15,7 @@ export default function ExitIntentPopup({ onOpenBooking }: ExitIntentPopupProps)
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [name, setName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
-  const [niche, setNiche] = useState<string>('general');
+  const [niche, setNiche] = useState<string>('website-redesign');
 
   useEffect(() => {
     const handleMouseLeave = (event: MouseEvent) => {
@@ -51,11 +51,11 @@ export default function ExitIntentPopup({ onOpenBooking }: ExitIntentPopupProps)
     localStorage.setItem('bytedepth_exit_consultation', JSON.stringify({ name, phone, niche }));
     
     // Auto redirect text preview to WhatsApp with personalized text
-    const textMsg = `Hi ByteDepth! My name is ${name}. I just claimed my free 15-minute consultation on your portal for my ${niche} business. Let's discuss a web asset demo!`;
+    const textMsg = `Hi ByteDepth! My name is ${name}. I am an MBBS Abroad Consultant and I just claimed my free 15-minute consultation on your portal for my student recruitment business (${niche} focus). Let's discuss a web asset demo!`;
     const formattedMsg = encodeURIComponent(textMsg);
     
     setTimeout(() => {
-      window.open(`https://wa.me/919169677589?text=${formattedMsg}`, '_blank');
+      window.open(`https://wa.me/919696775989?text=${formattedMsg}`, '_blank');
       setIsOpen(false);
     }, 1800);
   };
@@ -151,7 +151,7 @@ export default function ExitIntentPopup({ onOpenBooking }: ExitIntentPopupProps)
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="e.g. Adv. Amit"
+                    placeholder="e.g. Dr. Amit / Royal Overseas"
                     className="w-full text-xs px-3.5 py-3 border border-slate-200 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none text-slate-900"
                   />
                 </div>
@@ -173,7 +173,7 @@ export default function ExitIntentPopup({ onOpenBooking }: ExitIntentPopupProps)
 
               <div>
                 <label htmlFor="exit-niche" className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1.5 pl-1">
-                  Your Specialized Niche Category
+                  Your Specialized Package/Service
                 </label>
                 <select
                   id="exit-niche"
@@ -181,13 +181,12 @@ export default function ExitIntentPopup({ onOpenBooking }: ExitIntentPopupProps)
                   onChange={(e) => setNiche(e.target.value)}
                   className="w-full text-xs px-3.5 py-3 border border-slate-200 bg-white rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none text-slate-800"
                 >
-                  <option value="legal-finance">Legal / Financial Advisory</option>
-                  <option value="consulting">Coaching & Immigrations</option>
-                  <option value="realestate">Properties / Interiors / Architecture</option>
-                  <option value="health-wellness">Gym / Fitness / Physiotherapy</option>
-                  <option value="specialized-b2b">Enterprise B2B / Audits</option>
-                  <option value="creative-portfolio">Voiceover / Actorship / Creative Portfolio</option>
-                  <option value="general">Other Service Professional</option>
+                  <option value="website-redesign">Website Redesign & Re-MVP</option>
+                  <option value="meta-google-ads">Meta & Google Ads Campaign</option>
+                  <option value="social-media">Social Media Management</option>
+                  <option value="whatsapp-email">Bulk WhatsApp & Email Services</option>
+                  <option value="local-seo">Local SEO & Google Maps</option>
+                  <option value="complete-package">All-in-One Complete Package</option>
                 </select>
               </div>
 

@@ -29,7 +29,7 @@ export default function Footer({ onScrollToSection, onOpenBooking }: FooterProps
                   ByteDepth
                 </span>
                 <span className="text-[10px] text-slate-400 font-mono tracking-wider block mt-0.5 uppercase">
-                  WaaS Platform
+                  Consultancy Growth Partner
                 </span>
               </div>
             </div>
@@ -40,13 +40,13 @@ export default function Footer({ onScrollToSection, onOpenBooking }: FooterProps
 
             <div className="space-y-4 pt-2">
               <a 
-                href="https://wa.me/919169677589?text=Hi%20ByteDepth!%20I'd%20like%20to%20discuss%20a%20professional%20web%20asset%20demo." 
+                href="https://wa.me/919696775989?text=Hi%20ByteDepth!%20I'm%20an%20MBBS%20Abroad%20Consultant.%20I%20would%20like%20to%20discuss%20a%20high-converting%20student%20recruitment%20web%20system%20and%20professional%20digital%20lead%20gen%20assets%20for%2520my%2520consultancy." 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-xs font-semibold text-slate-705 text-emerald-800 hover:text-emerald-600 transition"
               >
                 <MessageSquare className="w-4 h-4 text-emerald-600 mr-2 shrink-0 animate-pulse" />
-                <span>WhatsApp: +91 91696 77589 (Chat Now)</span>
+                <span>WhatsApp: +91 96967 75989 (Chat Now)</span>
               </a>
               <a 
                 href="mailto:bytedepth@gmail.com" 

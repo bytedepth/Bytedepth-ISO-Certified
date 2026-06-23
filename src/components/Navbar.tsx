@@ -34,7 +34,7 @@ export default function Navbar({ onScrollToSection, onOpenBooking, hasActiveBook
                   ByteDepth
                 </span>
                 <span className="text-[10px] text-gray-400 font-mono tracking-wider block mt-0.5">
-                  WEBSITES AS A SERVICE
+                  CONSULTANCY GROWTH PARTNER
                 </span>
               </div>
             </button>
@@ -79,7 +79,7 @@ export default function Navbar({ onScrollToSection, onOpenBooking, hasActiveBook
           {/* Right Action Items */}
           <div className="hidden md:flex items-center space-x-4">
             <a 
-              href="https://wa.me/919169677589?text=Hi%20ByteDepth!%20I'd%20like%20to%20discuss%20a%20professional%20web%20asset%20demo." 
+              href="https://wa.me/919696775989?text=Hi%20ByteDepth!%20I'm%20an%20MBBS%20Abroad%20Consultant.%20I%20would%20like%20to%20discuss%20a%20high-converting%20student%20recruitment%20web%20system%20and%20professional%20digital%20lead%20gen%20assets%20for%252520my%252520consultancy." 
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-blue-600 font-medium text-xs flex items-center gap-1.5 transition"
@@ -98,14 +98,6 @@ export default function Navbar({ onScrollToSection, onOpenBooking, hasActiveBook
                 ● Live Brief
               </button>
             )}
-
-            <button 
-              onClick={onOpenBooking}
-              className="hover-pulse-btn bg-blue-600 text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/20 active:scale-95 transition-all cursor-pointer"
-              id="nav-cta-btn"
-            >
-              Book Demo for ₹500
-            </button>
           </div>
 
           {/* Mobile hamburger menu */}
@@ -166,7 +158,7 @@ export default function Navbar({ onScrollToSection, onOpenBooking, hasActiveBook
           
           <div className="flex flex-col gap-2.5 pt-2">
             <a 
-              href="https://wa.me/919169677589?text=Hi%20ByteDepth!%20I'd%20like%20to%20discuss%20a%20professional%20web%20asset%2520demo." 
+              href="https://wa.me/919696775989?text=Hi%20ByteDepth!%20I'm%20an%20MBBS%20Abroad%20Consultant.%20I%20would%20like%20to%20discuss%20a%20high-converting%20student%20recruitment%20web%20system%20and%20professional%20digital%20lead%20gen%20assets%20for%2520my%2520consultancy." 
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-2.5 border border-emerald-200 bg-emerald-50/50 rounded-lg text-sm font-semibold text-emerald-800 hover:bg-emerald-50"
@@ -174,12 +166,6 @@ export default function Navbar({ onScrollToSection, onOpenBooking, hasActiveBook
               <MessageSquare className="w-4 h-4 text-emerald-600" />
               <span>Chat on WhatsApp</span>
             </a>
-            <button 
-              onClick={() => { onOpenBooking(); setIsOpen(false); }}
-              className="hover-pulse-btn w-full bg-blue-600 text-white text-center py-3 rounded-xl text-sm font-bold shadow-lg shadow-blue-500/10 hover:bg-blue-700"
-            >
-              Book Custom Demo (₹500)
-            </button>
           </div>
         </div>
       )}

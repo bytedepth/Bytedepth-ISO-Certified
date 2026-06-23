@@ -5,12 +5,6 @@
 
 import { useState, ComponentType } from 'react';
 import { 
-  Scale, 
-  UserCheck, 
-  Building2, 
-  Activity, 
-  Briefcase, 
-  Compass, 
   Check, 
   Sparkles, 
   Smartphone, 
@@ -18,19 +12,24 @@ import {
   Laptop,
   CheckCircle2,
   Calendar,
-  Contact
+  Contact,
+  Megaphone,
+  Users,
+  MessageSquare,
+  Search,
+  Package
 } from 'lucide-react';
 import { NICHES_DATA } from '../data';
 import { NicheCategory } from '../types';
 
 // Map string names to imported Lucide React icon components
 const IconMap: Record<string, ComponentType<{ className?: string }>> = {
-  Scale: Scale,
-  UserCheck: UserCheck,
-  Building2: Building2,
-  Activity: Activity,
-  Briefcase: Briefcase,
-  Compass: Compass,
+  Laptop: Laptop,
+  Megaphone: Megaphone,
+  Users: Users,
+  MessageSquare: MessageSquare,
+  Search: Search,
+  Package: Package,
 };
 
 interface NichesProps {
@@ -38,13 +37,13 @@ interface NichesProps {
 }
 
 export default function Niches({ onSelectNicheForBooking }: NichesProps) {
-  const [selectedNicheId, setSelectedNicheId] = useState<string>('legal-finance');
+  const [selectedNicheId, setSelectedNicheId] = useState<string>('website-redesign');
   const [simulatorInteraction, setSimulatorInteraction] = useState<string | null>(null);
 
   const activeNiche = NICHES_DATA.find(n => n.id === selectedNicheId) || NICHES_DATA[0];
 
   const handleSimulateClick = (actionName: string) => {
-    setSimulatorInteraction(`Client clicked: "${actionName}"! A secure scheduling or intake form instantly overlay here.`);
+    setSimulatorInteraction(`Student clicked: "${actionName}"! A secure pre-filtered admission form instantly overlays here to capture their budget and NEET score.`);
     setTimeout(() => {
       setSimulatorInteraction(null);
     }, 4500);
@@ -57,13 +56,13 @@ export default function Niches({ onSelectNicheForBooking }: NichesProps) {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">
-            Tailored Industry Frameworks
+            Complete Digitalization Suite
           </span>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3 mb-4">
-            Websites Configured For Your Niche
+            Best Lead Generation & Web Systems For MBBS Abroad Consultants
           </h2>
-          <p className="text-slate-500 text-base">
-            We don't build generic brochure templates. We build professional, single-page client generation tunnels configured for your specific industry legalities, target audiences, and conversion triggers.
+          <p className="text-slate-500 text-base leading-relaxed">
+            Stop relying on slow, unoptimized sites and generic junk lead databases. We build interactive admission websites, run high-yield Meta/Google ads, manage authority social media, and configure bulk WhatsApp automation for 2026 batches.
           </p>
         </div>
 
@@ -78,7 +77,7 @@ export default function Niches({ onSelectNicheForBooking }: NichesProps) {
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-3">
               {NICHES_DATA.map((niche) => {
-                const IconComponent = IconMap[niche.icon] || Briefcase;
+                const IconComponent = IconMap[niche.icon] || Laptop;
                 const isSelected = niche.id === selectedNicheId;
                 
                 return (
@@ -116,9 +115,9 @@ export default function Niches({ onSelectNicheForBooking }: NichesProps) {
               <div className="flex items-start space-x-2.5">
                 <Sparkles className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
                 <div>
-                  <span className="text-xs font-bold text-slate-800 block">Need custom e-commerce?</span>
+                  <span className="text-xs font-bold text-slate-800 block">Get a Website Free Audit!</span>
                   <span className="text-xs text-slate-500 block mt-0.5">
-                    We build robust online catalogs & dynamic checkout flows upon request. Simply check the design preferences parameter in our ₹500 booking wizard.
+                    We will audit your existing consultancy website, review your current Google Maps SEO, and inspect your Meta pixel setup completely free. Just specify it in your ₹500 booking wizard!
                   </span>
                 </div>
               </div>

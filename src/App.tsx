@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MessageSquare } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -23,6 +23,34 @@ export default function App() {
   const [selectedNicheId, setSelectedNicheId] = useState<string>('legal-finance');
   const [hasActiveBooking, setHasActiveBooking] = useState<boolean>(false);
   const [bookingFormOpen, setBookingFormOpen] = useState<boolean>(false);
+  const [selectedPlanId, setSelectedPlanId] = useState<'complete' | 'basic' | 'onetime'>('complete');
+
+  // Dynamic SEO and OpenGraph meta tags for MBBS Abroad Consultants
+  useEffect(() => {
+    // Set Document Title
+    document.title = "ByteDepth | Premium Web Assets for MBBS Abroad Consultants & Student Recruitment";
+
+    const setMetaTag = (attrName: string, attrVal: string, contentVal: string) => {
+      let element = document.querySelector(`meta[${attrName}="${attrVal}"]`);
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute(attrName, attrVal);
+        document.head.appendChild(element);
+      }
+      element.setAttribute('content', contentVal);
+    };
+
+    // Update SEO meta descriptions and keywords
+    setMetaTag('name', 'description', 'ByteDepth designs premium, high-converting MBBS Abroad recruitment websites and digital marketing student acquisition funnels. Double your MBBS student intake with audited standards compliance, live mockups, and WhatsApp CRM integrations.');
+    setMetaTag('name', 'keywords', 'MBBS abroad consultants, student recruitment, MBBS abroad marketing, MBBS consultant website, MBBS student recruitment, digital student acquisition, medical college admission portal, MBBS admission leads');
+    
+    // Update OpenGraph details
+    setMetaTag('property', 'og:title', 'ByteDepth | High-Converting Student Recruitment Systems for MBBS Abroad Consultants');
+    setMetaTag('property', 'og:description', 'Deploy compliance-certified portals, NEET-score calculators, and direct WhatsApp routing built specifically for MBBS abroad student recruiters.');
+    setMetaTag('property', 'og:type', 'website');
+    setMetaTag('property', 'og:url', window.location.href);
+    setMetaTag('property', 'og:image', 'https://bytedepth.com/og-image-mbbs.jpg');
+  }, []);
 
   // Smooth scroll handler targeting sections on-page
   const handleScrollToSection = (sectionId: string) => {
@@ -45,7 +73,10 @@ export default function App() {
     handleScrollToSection('booking-form');
   };
 
-  const handleOpenBookingWizard = () => {
+  const handleOpenBookingWizard = (planId?: 'complete' | 'basic' | 'onetime') => {
+    if (planId) {
+      setSelectedPlanId(planId);
+    }
     setBookingFormOpen(true);
     handleScrollToSection('booking-form');
   };
@@ -94,7 +125,7 @@ export default function App() {
 
         {/* Section 5: Standard pricing package spotlight card */}
         <div id="pricing">
-          <Pricing onOpenBooking={handleOpenBookingWizard} />
+          <Pricing onOpenBooking={(planId) => handleOpenBookingWizard(planId)} />
         </div>
 
         {/* Grid highlighting ISO, SSL compliance and total delivery logs */}
@@ -104,6 +135,8 @@ export default function App() {
         <div id="booking-form">
           <BookingForm 
             selectedNicheId={selectedNicheId}
+            selectedPlanId={selectedPlanId}
+            onPlanChange={setSelectedPlanId}
             onBookingSubmittedStatusChange={setHasActiveBooking}
             isOpen={bookingFormOpen}
             onClose={() => setBookingFormOpen(false)}
@@ -125,7 +158,7 @@ export default function App() {
 
       {/* Sticky, floating WhatsApp button at bottom-right corner of screen */}
       <a
-        href="https://wa.me/9191696775989"
+        href="https://wa.me/919696775989?text=Hi%20ByteDepth!%20I'm%20an%20MBBS%20Abroad%20Consultant.%20I%20would%20like%20to%20discuss%20a%20high-converting%20student%20recruitment%20web%20system%20and%20professional%20digital%20lead%20gen%20assets%20for%2520my%2520consultancy."
         target="_blank"
         rel="noopener noreferrer"
         className="hover-pulse-btn fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full p-4 shadow-xl shadow-emerald-500/20 active:scale-95 transition-all flex items-center justify-center gap-2 group border border-emerald-400"

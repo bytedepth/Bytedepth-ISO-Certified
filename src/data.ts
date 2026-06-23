@@ -7,190 +7,189 @@ import { NicheCategory, FAQItem } from './types';
 
 export const NICHES_DATA: NicheCategory[] = [
   {
-    id: 'legal-finance',
-    title: 'Legal & Financial',
-    icon: 'Scale',
+    id: 'website-redesign',
+    title: 'Website Redesign & Re-MVP',
+    icon: 'Laptop',
     color: 'blue',
     bgColor: 'bg-blue-50',
     textColor: 'text-blue-700',
     borderColor: 'hover:border-blue-500',
-    specialty: 'Chartered Accountants (CAs), Law Firms, CS, Wealth Managers',
-    focus: 'Securing High-Value Inquiries & Building Immediate Regulatory Trust',
+    specialty: 'High-Conversion MBBS Admission Portals & Landing Pages',
+    focus: 'Converting Confused Visitors into Serious Registered MBBS Aspirants',
     professionals: [
-      'Chartered Accountants (CAs)',
-      'Corporate Lawyers',
-      'Company Secretaries (CS)',
-      'Wealth Managers',
-      'Tax & Compliance Advisors',
-      'Insurance Advisories'
+      'MBBS Abroad Consultancies',
+      'Overseas Medical Advisories',
+      'University Representatives',
+      'Direct Admission Coordinators',
+      'Foreign Education Franchises'
     ],
-    conversionCopy: 'Clients look for deep regulatory expertise and absolute confidentiality. Your custom landing page will feature trust badges, secure file-upload capabilities, integrated Google Reviews, and an automated Calendly discovery call intake system designed to capture top-tier corporate retainers.',
+    conversionCopy: 'Static, slow, and outdated websites lose high-value student enrollments to flashier brokers. We redesign your platform into an interactive, ISO-standard MBBS portal featuring step-by-step country guides, eligibility checkers, secure document uploads, and direct WhatsApp integrations to convert traffic instantly.',
     mockPageLayout: {
-      heroTitle: 'Secure, Professional Financial Advisory & Audit Services',
-      heroSubtitle: 'Helping corporate enterprises and high-earning professionals maximize tax efficiency, secure compliance, and protect business wealth.',
+      heroTitle: 'Secure Your MBBS Seat Abroad (2026 Batches Open)',
+      heroSubtitle: 'Apply to top MCI/NMC-approved government medical universities in Russia, Georgia, Uzbekistan, and Kyrgyzstan. Frictionless admission tracking from day one.',
       features: [
-        '✓ Direct Consultation Booker (Integrated with Calendly/Zoom)',
-        '✓ Client Portal Link with file-upload guidelines',
-        '✓ Live Compliance Tracker & Interactive Tax Deadline Calendar',
-        '✓ 128-bit Encrypted Contact Forms for Secure Client Intake'
+        '✓ Direct Admission Eligibility Calculator (NEET-Score Filtered)',
+        '✓ Virtual Video Tours of Foreign University Hostels & Labs',
+        '✓ Interactive Fee Breakdowns (Tuition, Hostel, & Insurance)',
+        '✓ One-Click WhatsApp Support with Verified Country Advisors'
       ],
-      primaryCTA: 'Book Private Tax & Audit Review',
-      trustStatement: '★ 4.9/5 Rating - Trusted by 250+ Business Founders across India.'
+      primaryCTA: 'Get Free Custom Admission Brochure',
+      trustStatement: '★ ISO 9001:2015 Quality Standards - Trusted by 150+ Top Consultancies.'
     }
   },
   {
-    id: 'consulting',
-    title: 'Consulting & Advisory',
-    icon: 'UserCheck',
+    id: 'meta-google-ads',
+    title: 'Meta & Google Ads System',
+    icon: 'Megaphone',
     color: 'emerald',
     bgColor: 'bg-emerald-50',
     textColor: 'text-emerald-700',
     borderColor: 'hover:border-emerald-500',
-    specialty: 'Overseas Education, Immigration Coaches, HR, IT/Cybersecurity Experts',
-    focus: 'Frictionless Evaluation Request & Discovery Session Bookings',
+    specialty: 'Qualified Student Lead Generation for 2026 Admissions',
+    focus: 'Filtering NEET-Qualified, Serious Students over Random Inquiries',
     professionals: [
-      'Overseas Education Agencies',
-      'Immigration & Visa Advisors',
-      'Business Growth Strategy Consultants',
-      'IT & Cybersecurity Experts',
-      'Compliance & HR Advisors'
+      'Meta Leads Generation (FB & Insta)',
+      'Google Search & Intent Targeting',
+      'High-ROI YouTube Video Ads',
+      'Retargeting Interested Aspirants',
+      'Parent-Targeted Educational Campaigns'
     ],
-    conversionCopy: 'Advisory sales are built on credibility, process transparency, and quick triage. Your landing page will replace static PDFs with interactive eligibility calculators, visual milestone timelines (e.g., from Admission to Visa Approval), and high-intent case study reviews.',
+    conversionCopy: 'Stop paying for stale, junk database lists that are sold to 10 other agencies. We build custom Meta and Google Search Ad pipelines that pre-filter candidates by NEET qualification status, budget limits, and country preferences (e.g. Georgia, Russia, Philippines). You get exclusive, hot inquiries directly inside your WhatsApp CRM.',
     mockPageLayout: {
-      heroTitle: 'Guaranteed University Admissions & Seamless Immigration Guidance',
-      heroSubtitle: 'Navigate study-abroad programs and visa approvals with 98.4% success. Zero hidden fees. Direct mentorship from certified advisors.',
+      heroTitle: 'Target Serious NEET-Qualified Students Ready for Admissions',
+      heroSubtitle: 'Our custom-targeted ad systems bypass low-intent junk queries. Feed your sales counselors high-value student profiles who actively want to study medicine abroad.',
       features: [
-        '✓ AI Eligibility Form (Dynamic qualification scoring)',
-        '✓ Detailed Step-by-Step Educational Roadmaps',
-        '✓ Live Visa Dashboard & Documentation Checklist',
-        '✓ Daily Drop-In Callback System'
+        '✓ Pre-qualified lead intake forms (NEET Score & Budget)',
+        '✓ Real-time lead synchronization to WhatsApp or CRM',
+        '✓ Highly optimized landing funnels designed to minimize CPL',
+        '✓ Automated instant SMS and WhatsApp greeting campaigns'
       ],
-      primaryCTA: 'Check Eligibility & Book Call',
-      trustStatement: '★ Authorized Partner with 80+ Global Elite Universities.'
+      primaryCTA: 'Setup Pre-Filtered Lead Flow',
+      trustStatement: '★ Generated 45,000+ Verified Aspirant Inquiries in Last Admission Cycle.'
     }
   },
   {
-    id: 'real-estate',
-    title: 'Real Estate & Property',
-    icon: 'Building2',
+    id: 'social-media',
+    title: 'Social Media Management',
+    icon: 'Users',
     color: 'amber',
     bgColor: 'bg-amber-50',
     textColor: 'text-amber-700',
     borderColor: 'hover:border-amber-500',
-    specialty: 'Brokerages, Property Managers, Interior Designers, Architects',
-    focus: 'Capturing Local Off-Market Buyer Leads & Interactive Portfolios',
+    specialty: 'Brand Trust, Country Explainer Reels, & Authority Positioning',
+    focus: 'Building Direct Student & Parent Trust via Authentic Content Reels',
     professionals: [
-      'Real Estate Brokers',
-      'Commercial Property Consultants',
-      'Interior Designers',
-      'Custom Home Architects',
-      'Home Loan & Mortgage Advisors'
+      'Instagram Reels & Reels Templates',
+      'YouTube Shorts & Country Guides',
+      'Facebook Parent Communities',
+      'Student Testimonial Video Carousels',
+      'Daily Infographics on MCI/NMC Updates'
     ],
-    conversionCopy: 'Real estate buys are intensely visual and hyper-local. We build ultra-fast loading showrooms with crisp image carousels, immersive virtual tour embeds, and 1-click WhatsApp map coordinate shares for site-visit bookings.',
+    conversionCopy: 'Sending children abroad is a monumental family decision; trust is your absolute currency. Our social media engine creates polished, high-authority explainer reels, visual comparison charts, and student testimony formats that position your brand as the direct, secure link to elite global medical schools.',
     mockPageLayout: {
-      heroTitle: 'Exclusive Premium Residences with Guaranteed Rental Yields',
-      heroSubtitle: 'Pre-launch access to architectural masterworks in prime residential locations. Flexible payment options starting from ₹1.2 Cr.',
+      heroTitle: 'Build Unshakable Trust with MBBS Aspirants & Parents',
+      heroSubtitle: 'Position your medical consultancy as the absolute gold standard on social media. We create high-engagement reels, visa-success updates, and campus walk-throughs.',
       features: [
-        '✓ Download Premium Brochure (Unlocks on verified phone input)',
-        '✓ Visual Grid of Current Available Properties with status lines',
-        '✓ Virtual 3D Tour Embed or High-Definition Video Carousels',
-        '✓ WhatsApp API Quick-Routing for instant site coordinators'
+        '✓ Structured Monthly Reels & Country Comparison Calendars',
+        '✓ Animated Video Templates showing Real Student Feedback',
+        '✓ Fact-Checking MCI / NMC Eligibility Regulation Explanations',
+        '✓ Parent Live-Stream Q&A Graphic Assets'
       ],
-      primaryCTA: 'Get High-Res Brochure & Plan Visit',
-      trustStatement: '✓ Registered with RERA. Zero Broking fee for early registrants.'
+      primaryCTA: 'Get Customized Content Strategy',
+      trustStatement: '✓ Double organic outreach traffic and gain 3x more parent engagement.'
     }
   },
   {
-    id: 'health-wellness',
-    title: 'Health & Wellness',
-    icon: 'Activity',
+    id: 'whatsapp-email',
+    title: 'Bulk WhatsApp & Email Services',
+    icon: 'MessageSquare',
     color: 'rose',
     bgColor: 'bg-rose-50',
     textColor: 'text-rose-700',
     borderColor: 'hover:border-rose-500',
-    specialty: 'Gyms, Yoga Studios, Nutritionists, Physiotherapists, Therapists',
-    focus: 'Reducing Friction for First-Time Trials and Assessment Opt-Ins',
+    specialty: 'High-Volume Retargeting & Admission Cohort Announcements',
+    focus: 'Re-engaging Dormant Leads with High-Deliverability Sequences',
     professionals: [
-      'Gyms & CrossFit Studios',
-      'Yoga & Meditation Academies',
-      'Dietitians & Nutritionists',
-      'Physiotherapists & Joint Specialists',
-      'Independent Mental Health Therapists'
+      'Official WhatsApp API Campaigns',
+      'Mass NEET-Rank SMS Blast Systems',
+      'Rich-Media Admission Email Newsletters',
+      'Interactive Chatbots for Seat Reservation',
+      'Parent Cohort Broadcast Networks'
     ],
-    conversionCopy: 'Health and gym prospects make emotional, impulsive bookings. Your landing page features a frictionless "Trial Pass" or "Diet Calculator" to capture leads instantly, accompanied by gorgeous trainer bios, package details, and community video proof.',
+    conversionCopy: 'Do you have thousands of old inquiries sitting in spreadsheets? Put them to work. We configure bulk, spam-compliant WhatsApp API broadcasting and rich-media email structures. Instantly alert your database about upcoming visa deadlines, university entrance test dates, or limited seat offers for top colleges.',
     mockPageLayout: {
-      heroTitle: 'Transform Your Body & Mind Under Certified Expert Elite Linemen',
-      heroSubtitle: 'Tailored weight loss schemas, clinical physiotherapy rehabilatations, and organic meals built to sustain muscle longevity.',
+      heroTitle: 'Re-Engage Dormant Leads & Automate Admission Workflows',
+      heroSubtitle: 'Deliver 98% open-rate rich-media WhatsApp alerts and highly personalized emails directly to medical aspirants and their guardians.',
       features: [
-        '✓ Book 3-Day VIP Studio Pass (Zero Commitment)',
-        '✓ Personalized Diet Estimator Integration',
-        '✓ Clean Price Tables showing Single Session vs 12-Week Package',
-        '✓ Authentic Video Success Stories with before-and-after tracks'
+        '✓ Official WhatsApp Green-Badge API System Setup',
+        '✓ Instant Automated Follow-ups & Document Reminders',
+        '✓ Pre-configured admission question-and-answer Chatbots',
+        '✓ High-deliverability bulk email newsletters for parents'
       ],
-      primaryCTA: 'Get Your Free Pass Instantly',
-      trustStatement: '✓ Rated Best Premium Training Facility 2024–2025.'
+      primaryCTA: 'Automate Student Outreach Now',
+      trustStatement: '✓ Verified WhatsApp API solutions with robust spam-protection guards.'
     }
   },
   {
-    id: 'specialized-b2b',
-    title: 'Specialized B2B',
-    icon: 'Briefcase',
+    id: 'local-seo',
+    title: 'Local SEO & Google Maps',
+    icon: 'Search',
     color: 'violet',
     bgColor: 'bg-violet-50',
     textColor: 'text-violet-700',
     borderColor: 'hover:border-violet-500',
-    specialty: 'Corporate Trainers, Supply Chain Advisory, PR, Photographers',
-    focus: 'Communicating Clear B2B ROI, Corporate Credibility, & RFPs',
+    specialty: 'Dominating Local Search Queries & Google Maps Rankings',
+    focus: 'Attracting Direct Walk-In Inquiries in Your Physical Office Territories',
     professionals: [
-      'Corporate Training Agencies',
-      'Supply Chain & ISO Consultants',
-      'Pr & Reputation Management Agencies',
-      'Commercial & Corporate Photographers',
-      'Event Planners & Corporate Organizers'
+      'Google Business Profile Optimization',
+      'Local Citation & Review Campaigns',
+      'Location-Specific MBBS Landing Pages',
+      'Hyper-Local Maps Ad Campaigns',
+      'Local Education Expo Event Listings'
     ],
-    conversionCopy: 'Corporate procurement departments demand case study proof, clear scopes, and structured PDF quotations. We formulate layouts that showcase concrete statistics, client roster logos, detailed service tiers, and automated request-for-quotes.',
+    conversionCopy: 'Parents prefer local consultants whom they can physically meet. We optimize your Google Business Profiles and build localized page strategies to capture high-intent queries like "Best MBBS consultant near me" or "Russia medical admissions in Pune/Delhi". Attract secure walk-in prospects directly to your office.',
     mockPageLayout: {
-      heroTitle: 'Enterprise ISO Certification & Process Automation Advisory',
-      heroSubtitle: 'Audit-ready business transformations. Accelerate global trading compliance, minimize production scrap, and secure global credibility.',
+      heroTitle: 'Dominate Local MBBS Search Queries in Your Territory',
+      heroSubtitle: 'Rank at the absolute top of Google Maps and Local Search. Ensure students and parents find your physical branch before anyone else.',
       features: [
-        '✓ Download Detailed Service Catalog & Corporate Deck',
-        '✓ Quantified Case Studies (e.g. "Saved ₹12L in Supply Chains")',
-        '✓ Clear Three-Tier Enterprise Retainer Cards',
-        '✓ NDA-backed Inquiry intake portal'
+        '✓ Google Business Profile ranking strategies for top medical keywords',
+        '✓ Automated Review Collection Engines for student testimonials',
+        '✓ Customized localized landing pages for regional branches',
+        '✓ Live Maps location integration with one-click driving navigation'
       ],
-      primaryCTA: 'Request Executive Proposals',
-      trustStatement: '✓ Over 18 Years of Certified ISO Consulting and Audit Audits.'
+      primaryCTA: 'Claim Local SEO Dominance',
+      trustStatement: '✓ Over 40+ medical consulting offices ranked in top 3 local packs.'
     }
   },
   {
-    id: 'creative-portfolio',
-    title: 'Creative Portfolio',
-    icon: 'Compass',
+    id: 'complete-package',
+    title: 'Complete Consultancy Package',
+    icon: 'Package',
     color: 'pink',
     bgColor: 'bg-pink-50',
     textColor: 'text-pink-700',
     borderColor: 'hover:border-pink-500',
-    specialty: 'Voiceover Artists, Brand Strategists, Public Figure Actors, Influencers',
-    focus: 'Filtering Low-Budget Prospects, Showing Dynamic Media, & High CTAs',
+    specialty: 'End-to-End Digitalization & 2026 Batch Enrollment System',
+    focus: 'Integrating Web, Social Media, Ads, & WhatsApp into One Powerhouse',
     professionals: [
-      'Professional Voiceover Artists',
-      'Brand & Identity Consultants',
-      'Actors, Public Speakers, and Models',
-      'Digital Creators & Content Executives',
-      'Consulting Coach Portfolios'
+      'All-In-One MBBS Consultant Digital Kit',
+      'Complete Website Redesign (Re-MVP)',
+      'Meta + Google Active Ad Account Setup',
+      'Bulk Messaging & CRM Integrations',
+      'Staff Intake Workflow Automation'
     ],
-    conversionCopy: 'Your personal brand is your absolute currency. Stop sending messy Linktree links, Google Drives, or YouTube URLs. We consolidate your pristine audio reels, design case studies, or video sizzles into one high-converting digital calling card that command premium fees.',
+    conversionCopy: 'Why hire multiple freelancers or unaligned agencies? Get the ultimate, unified package designed exclusively for top-tier MBBS Abroad Consultants. We handle your entire digital system—from auditing your current assets to launching direct student lead tunnels and configuring WhatsApp CRM automation.',
     mockPageLayout: {
-      heroTitle: 'Direct Voiceover Artist & Brand Sound Strategist',
-      heroSubtitle: 'Deep, conversational, and authoritative bilingual voiceover for commercials, documentaries, and explainer videos.',
+      heroTitle: 'The Complete Digital Pipeline for Abroad Consultancies',
+      heroSubtitle: 'From a high-converting MBBS admission website, to premium leads, official WhatsApp messaging automation, and expert social media management.',
       features: [
-        '✓ Built-in HTML5 Audio Soundreel Players (Instantly playable)',
-        '✓ Filtered "Select Client Showreel" Grid',
-        '✓ transparent booking rate cards (Commercial / Broadcast)',
-        '✓ 1-Click WhatsApp Studio Availability Checker'
+        '✓ High-Converting Custom MBBS Website (Value: ₹25,000)',
+        '✓ Meta & Google High-ROI Campaign Setup (Value: ₹15,000)',
+        '✓ Official WhatsApp API & CRM Integration (Value: ₹12,000)',
+        '✓ Full Website Free Audit & Continuous Optimization'
       ],
-      primaryCTA: 'Listen to Soundreels & Check Dates',
-      trustStatement: '✓ Proud Voice Behind Brands like BMW, Audi, and Tech Corp.'
+      primaryCTA: 'Get All-In-One Package Demo',
+      trustStatement: '✓ The choice of India\'s elite, high-volume MBBS Abroad consultancies.'
     }
   }
 ];
@@ -198,32 +197,32 @@ export const NICHES_DATA: NicheCategory[] = [
 export const FAQ_DATA: FAQItem[] = [
   {
     id: 1,
-    question: 'How does the ₹500 booking offer work?',
-    answer: 'It is a risk-free engagement model: you fill out our inquiry form, selecting your preferred style and providing basic service info. You then pay a committing booking deposit of just ₹500 via our secure Razorpay gateway. Our development team begins building a active live prototype, hosted on our servers. In 24 to 72 hours, we send you a private review link.'
+    question: 'How do you target serious MBBS aspirants instead of random junk inquiries?',
+    answer: 'We build strict custom NEET-score and budget pre-qualification filters right inside our lead landing pages and Meta/Google forms. Instead of random numbers, you receive qualified student profiles with details like: NEET score status, desired target countries (e.g. Russia, Georgia, Uzbekistan, Kyrgyzstan, Philippines), and budget capacity. This saves your counselors hours of wasted time.'
   },
   {
     id: 2,
-    question: 'What happens if I don’t like the custom demo?',
-    answer: 'If the demo does not meet your expectations or branding vision, simply tell us. You can request up to two rounds of design revisions completely free of charge. If you still decide it is not for you, there is zero obligation to pay the remaining balance. We keep the demo, and you walk away. No lock-ins, no complicated sales contracts.'
+    question: 'How does the ₹500 booking / website free audit offer work?',
+    answer: 'It is simple and risk-free. You fill out our brief booking form and pay a commitment deposit of just ₹500. Our expert team will then run a complete Free Audit of your existing online presence or draft a fresh admission-focused live MVP prototype for your consultancy. We deliver this customized review or mockup within 24 to 72 hours.'
   },
   {
     id: 3,
-    question: 'What is included in the full ₹9,999 package?',
-    answer: 'The ₹9,999 package is all-inclusive for modern professionals. It covers: custom landing page design, secure contact forms, integrated social channels or reviews, mobile optimization, SEO foundations, fast CDN hosting setup, direct WhatsApp and Calendly widgets, and 30 days of free post-launch support. (Domain name is registered on client account directly, keeping you in full legal ownership of your brand).'
+    question: 'What target countries does your system support for 2026 batches?',
+    answer: 'Our marketing funnels, eligibility calculators, and brochure systems are optimized to highlight top medical destinations including Russia, Georgia, Uzbekistan, Kyrgyzstan, the Philippines, Kazakhstan, Egypt, and other emerging global options. We customize our filters and content to match your university contracts.'
   },
   {
     id: 4,
-    question: 'Is there support for custom e-commerce or multi-page systems?',
-    answer: 'Yes! While single-page landing sites are the absolute champion for lead-generation and professional services, we offer customized upsells for full product catalogs, client dashboards, dynamic newsletters, and payment integrations. Once we establish contact during your demo review, we will provide a specialized quote matching your precise enterprise parameters.'
+    question: 'What is included in the Complete Packages Solution for Abroad Consultancy?',
+    answer: 'The complete solution is an all-inclusive system covering your entire digital setup. It includes a brand-new high-converting admission website, active Meta & Google ad setups, custom Instagram/Facebook brand management, and official bulk WhatsApp API integrations. It is designed to act as your external digital department.'
   },
   {
     id: 5,
-    question: 'What is ByteDepth’s ISO 9001:2015 certification?',
-    answer: 'ByteDepth is operated under certified quality standards for web development, system architecture, and UX engineering. This means our delivery parameters (24-72 hours) are rigorously structured, our codes conform to top accessibility and security vectors, and we maintain precise delivery checklists to prevent any post-launch bugs.'
+    question: 'Is ByteDepth experienced with MBBS MCI/NMC guidelines?',
+    answer: 'Yes. We design with student/parent trust and regulatory compliance in mind. We display NMC guidelines, eligibility rules (such as 50% in PCB + NEET qualification), and country structures clearly so that your brand conveys authentic, legal-standard authority, filtering out candidates who cannot secure admission anyway.'
   },
   {
     id: 6,
-    question: 'How do I pay the remaining balance?',
-    answer: 'Once you review your fully completed live demo and say, "This is perfect, let’s take it live!", we will send you a final Razorpay payment invoice for the remaining balance of ₹9,499. Once received, we configure your custom domain name (e.g., yourname.com) and deploy the site live to the cloud.'
+    question: 'How do we pay the remaining balance for a website build or campaign setup?',
+    answer: 'After you review your live customized mockup or audit outcome and say "Let\'s launch this!", we send a final invoice for the remaining balance. Once received, we deploy the website to your domain and launch your ad accounts. We also provide full walkthroughs to ensure your staff knows how to pull leads.'
   }
 ];

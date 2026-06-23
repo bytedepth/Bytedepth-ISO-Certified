@@ -23,95 +23,94 @@ interface CaseStudyItem {
 
 const CASE_STUDIES: CaseStudyItem[] = [
   {
-    id: 'cs-legal',
-    nicheId: 'legal-finance',
-    clientName: 'Verma Tax Chambers & Audit Services',
-    location: 'Mumbai, India',
-    metricBefore: '2 leads / mo',
-    metricAfter: '28 high-tier retainers / mo',
-    metricChange: '+1,300%',
-    beforeLabel: 'Cluttered PDF brochure link on a slow WordPress template with stale maps listing.',
-    afterLabel: 'ByteDepth Secure Triage Portal with encrypted intake, direct Calendly integration, and verified Google reviews.',
-    storyText: 'Verma Tax Chambers needed corporate retainers but was losing premium prospects due to a slow, unoptimized landing layout. By deploying our ISO-standard client generation flow, we consolidated security badges, configured Calendly, and increased booking rates immediately.',
-    featuresAdded: ['Encrypted client intake form', 'Automated Calendly scheduler', 'Live Tax Deadline Calendar']
+    id: 'cs-website',
+    nicheId: 'website-redesign',
+    clientName: 'MedEnroll India (Direct Foreign Admission Partner)',
+    location: 'Mumbai, Maharashtra',
+    metricBefore: '4 leads / mo',
+    metricAfter: '42 qualified registration passes / mo',
+    metricChange: '10.5x',
+    beforeLabel: 'Cluttered, outdated WordPress website showing massive blocky text and no mobile-friendly admission eligibility form.',
+    afterLabel: 'ByteDepth Interactive MBBS Admission Portal with a NEET-Score calculator and direct WhatsApp counselor routing.',
+    storyText: 'MedEnroll needed to fill 2026 seats but was losing premium candidates due to a slow, generic website layout. By deploying our interactive country Guides and eligibility forms, they captured hot parent inquiries instantly.',
+    featuresAdded: ['NEET Score Admission Calculator', '1-Click WhatsApp Support Widget', 'Foreign Hostel Video Showroom']
   },
   {
-    id: 'cs-consulting',
-    nicheId: 'consulting',
-    clientName: 'Apex Overseas Study & Immigration',
+    id: 'cs-meta-ads',
+    nicheId: 'meta-google-ads',
+    clientName: 'Apex Abroad MBBS Consultancies',
     location: 'Delhi NCR',
-    metricBefore: '1.2% Conversion Rate',
-    metricAfter: '4.8% Active Scorers',
-    metricChange: '4x Lead Volume',
-    beforeLabel: 'Static Contact Us form requiring manual resume uploads and returning dead-end thank you pages.',
-    afterLabel: 'Interactive study-abroad eligibility assessment scorer with automatic milestone roadmapping.',
-    storyText: 'Apex Overseas was wasting consultation resources on unqualified visa applicants. Bytedepth replaced static text grids with a frictionless interactive eligibility score sheet, filtering low-intent leads and delivering complete documents automatically.',
-    featuresAdded: ['Interactive Eligibility Calculator', 'Milestone Journey Timelines', 'Automated document checklists']
+    metricBefore: 'Junk database cold calls only',
+    metricAfter: '120+ NEET-Qualified Student Profiles / mo',
+    metricChange: '12x',
+    beforeLabel: 'Wasting counselor resources cold calling dry, recycled database sheets sold to multiple agencies.',
+    afterLabel: 'Custom Meta Lead campaigns pre-filtering students based on NEET score, budget, and desired target country.',
+    storyText: 'Apex Abroad was drowning in low-intent student calls. We configured targeted Meta Ads targeting serious MBBS aspirants for Russia and Georgia. Inquiries now arrive pre-vetted with score and budget details.',
+    featuresAdded: ['Pre-Vetted Meta Lead Forms', 'Real-time Lead CRM Sync', 'Automatic Counselor Alerts']
   },
   {
-    id: 'cs-realestate',
-    nicheId: 'real-estate',
-    clientName: 'Siddharth & Sons Premium Brokerage',
-    location: 'Bengaluru, India',
-    metricBefore: 'Manual followups only',
-    metricAfter: '80+ Verified Site Visits',
-    metricChange: '+280% Site Tours',
-    beforeLabel: 'Standard property lists spread across external classified portals with high broker pollution.',
-    afterLabel: 'Fast-loading immersive virtual showroom with 1-click WhatsApp map coordinates.',
-    storyText: 'Siddharth & Sons was struggling to capture local HNIs for prime pre-launches. We built a beautiful single-screen focus showroom that locked high-resolution brochures behind a verified contact barrier, routing tours to site coordinators via WhatsApp APIs.',
-    featuresAdded: ['Visual grid of current available properties', '1-Click WhatsApp site sync', 'Locked high-res brochure PDF']
+    id: 'cs-social',
+    nicheId: 'social-media',
+    clientName: 'Vanguard MedEd Global',
+    location: 'Bengaluru, Karnataka',
+    metricBefore: 'Stale stock graphics',
+    metricAfter: '24,000+ Video Views / mo',
+    metricChange: '4x',
+    beforeLabel: 'Posting generic stock photos with text grids, causing zero student engagement or brand trust.',
+    afterLabel: 'High-authority reels showing real campus walkthroughs, hostel reviews, and student testimony formats.',
+    storyText: 'Vanguard struggled to build authority online. We formulated a monthly social media reel plan focusing on authentic hostel comparisons and MCI/NMC guidelines. Engagement and walk-ins multiplied immediately.',
+    featuresAdded: ['Custom Explainer Reels', 'MCI / NMC Policy Infographics', 'Student Video Testimonial Formats']
   },
   {
-    id: 'cs-health',
-    nicheId: 'health-wellness',
-    clientName: 'Dr. Ritu’s Core Physiotherapy Clinic',
-    location: 'Pune, India',
-    metricBefore: 'No online bookings',
-    metricAfter: '44 Patient slot trials / mo',
-    metricChange: 'Full capacity',
-    beforeLabel: 'Standard practice description on generic local business directories with zero conversion call to actions.',
-    afterLabel: 'Frictionless 3-day VIP clinical assessment program pass with automated SMS confirmations.',
-    storyText: 'Dr. Ritu wanted to fill direct clinical assessment slots during weekday generic low-hours. Our health framework centered an emotional "VIP assessment pass" opt-in, establishing immediate physician trust and booking patient loops smoothly.',
-    featuresAdded: ['3-Day VIP Studio Pass offer', 'Dynamic clinical staff biographies', 'Interactive treatment sliders']
+    id: 'cs-whatsapp',
+    nicheId: 'whatsapp-email',
+    clientName: 'Siddharth Medical Careers',
+    location: 'Pune, Maharashtra',
+    metricBefore: '90% dormant lead list',
+    metricAfter: '84 seats filled for 2026',
+    metricChange: 'Full Batches',
+    beforeLabel: 'Over 5,000 old student inquiries sitting in spreadsheets with zero follow-up or engagement.',
+    afterLabel: 'High-deliverability official WhatsApp API broadcasting system with interactive chatbots.',
+    storyText: 'Siddharth Medical had thousands of older student leads. We set up an automated, spam-compliant WhatsApp broadcast. We alerted cohorts on Georgia and Uzbekistan seat availability, filling their batches in record time.',
+    featuresAdded: ['Official WhatsApp API Broadcasts', 'Interactive Seat Reservation Chatbots', 'Automated Email Brochure Sequences']
   },
   {
-    id: 'cs-b2b',
-    nicheId: 'specialized-b2b',
-    clientName: 'Sovereign ISO Audits & Compliance',
-    location: 'Chennai, India',
-    metricBefore: '90-day RFP cycles',
-    metricAfter: '14-day average close',
-    metricChange: '-76% Sales Friction',
-    beforeLabel: 'Corporate decks sent over static attachments that files got marked as spam by enterprise filters.',
-    afterLabel: 'Secure NDA-protected procurement portal with concrete ISO corporate case statistics.',
-    storyText: 'Sovereign was bogged down by endless corporate procurement questions. Bytedepth structured a modern, compliant B2B layout with dynamic retainer grids, clear NDA locks, and 1-click execution request forms.',
-    featuresAdded: ['Corporate Deck secure download', 'Three-tier Enterprise Retainer Cards', 'NDA Protected Intake Portal']
+    id: 'cs-seo',
+    nicheId: 'local-seo',
+    clientName: 'Zenith MBBS Overseas',
+    location: 'Chennai, Tamil Nadu',
+    metricBefore: 'Invisible on Google Search',
+    metricAfter: '75+ local branch walk-ins / mo',
+    metricChange: '+400%',
+    beforeLabel: 'No optimized local map profile, letting rival agencies capture local student/parent walk-ins.',
+    afterLabel: 'Ranked #1 for local MBBS consulting keywords with automated student review tools.',
+    storyText: 'Zenith was losing local walk-ins to nearby competitors. We optimized their Google Maps Business Profile and launched local branch landing pages. They now dominate the local MBBS consultation searches in their area.',
+    featuresAdded: ['Google Maps Rank Optimization', 'Student Review Collector Widget', 'Branch-specific Admission Portals']
   },
   {
-    id: 'cs-creative',
-    nicheId: 'creative-portfolio',
-    clientName: 'Devyani Soundreels & Brand Voice',
-    location: 'Mumbai, India',
-    metricBefore: 'Low-budget gig offers',
-    metricAfter: '₹45,000 corporate retainers',
-    metricChange: 'Premium pricing power',
-    beforeLabel: 'Messy Linktree link with separate Google Drive audio clips causing client friction.',
-    afterLabel: 'Pristine, premium bilingual HTML5 audio player soundreel dashboard with instant calendar check.',
-    storyText: 'Devyani was losing high-end brand commercial voices because agency producers hated navigating disorganized folders. We consolidated her soundreels into a polished, gorgeous single page with 1-click studio availability checks.',
-    featuresAdded: ['Built-in Soundreel Players', 'Direct Studio Availability checker', 'Transparent corporate rate-scale card']
+    id: 'cs-package',
+    nicheId: 'complete-package',
+    clientName: 'Pinnacle Medical Advisors',
+    location: 'Hyderabad, Telangana',
+    metricBefore: 'Unaligned multi-agency mess',
+    metricAfter: '380+ registrations for Russia/Georgia',
+    metricChange: '-45% Cost Per Lead',
+    beforeLabel: 'Working with disjointed freelancers for ads and sites, leading to high ad-spend waste and zero tracking.',
+    afterLabel: 'Complete unified package covering website redesign, Meta/Google ads, and WhatsApp CRM pipeline.',
+    storyText: 'Pinnacle was wasting ad budgets due to broken pixel trackers on their old site. Bytedepth deployed a fully integrated package: a brand-new high-converting portal with pre-set pixels, running pre-filtered ads, and syncing directly to WhatsApp.',
+    featuresAdded: ['Brand-New Conversion Website', 'Meta & Google Campaign Management', 'WhatsApp API CRM Automation']
   }
 ];
 
 const CATEGORIES = [
-  { id: 'all', title: 'All Sectors' },
-  { id: 'professional', title: 'Finance & Law', niches: ['legal-finance', 'specialized-b2b'] },
-  { id: 'wellness', title: 'Health & Advisory', niches: ['health-wellness', 'consulting'] },
-  { id: 'property-creative', title: 'Property & Media', niches: ['real-estate', 'creative-portfolio'] }
+  { id: 'all', title: 'All Solutions' },
+  { id: 'marketing-ads', title: 'Marketing & Outreach', niches: ['meta-google-ads', 'social-media', 'whatsapp-email'] },
+  { id: 'web-seo', title: 'Websites & Local SEO', niches: ['website-redesign', 'local-seo', 'complete-package'] }
 ];
 
 export default function CaseStudies() {
   const [activeCategoryId, setActiveCategoryId] = useState<string>('all');
-  const [activeNicheId, setActiveNicheId] = useState<string>('legal-finance');
+  const [activeNicheId, setActiveNicheId] = useState<string>('website-redesign');
   const [isStudyLoading, setIsStudyLoading] = useState<boolean>(false);
 
   // Filter niches matching selected category

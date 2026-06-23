@@ -30,6 +30,8 @@ import { BookingRequest } from '../types';
 
 interface BookingFormProps {
   selectedNicheId?: string;
+  selectedPlanId: 'complete' | 'basic' | 'onetime';
+  onPlanChange: (plan: 'complete' | 'basic' | 'onetime') => void;
   onBookingSubmittedStatusChange: (hasBooking: boolean) => void;
   isOpen: boolean;
   onClose: () => void;
@@ -37,6 +39,8 @@ interface BookingFormProps {
 
 export default function BookingForm({ 
   selectedNicheId, 
+  selectedPlanId,
+  onPlanChange,
   onBookingSubmittedStatusChange,
   isOpen,
   onClose
@@ -46,11 +50,35 @@ export default function BookingForm({
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
-  const [niche, setNiche] = useState<string>('legal-finance');
+  const [niche, setNiche] = useState<string>('website-redesign');
   const [businessName, setBusinessName] = useState<string>('');
   const [goals, setGoals] = useState<string>('');
   const [customDomainReq, setCustomDomainReq] = useState<boolean>(true);
   const [designStyle, setDesignStyle] = useState<'modern-dark' | 'clean-corporate' | 'warm-organic' | 'creative-bold'>('clean-corporate');
+
+  const getPlanDetails = (planId: 'complete' | 'basic' | 'onetime') => {
+    switch(planId) {
+      case 'basic':
+        return { name: 'Basic Plan', cost: '₹300/day', retainer: 'Billed monthly (₹9,000)' };
+      case 'onetime':
+        return { name: 'One Time Identity', cost: '₹20,000', retainer: 'One-time Payment' };
+      case 'complete':
+      default:
+        return { name: 'Complete Package', cost: '₹600/day', retainer: 'Monthly Retainer: ₹15,000 (Hire Us!)' };
+    }
+  };
+
+  const getPlanBalanceText = (planId: 'complete' | 'basic' | 'onetime') => {
+    switch(planId) {
+      case 'basic':
+        return 'Balance of ₹8,500 settling only upon mockup approval.';
+      case 'onetime':
+        return 'Balance of ₹19,500 settling only upon mockup approval.';
+      case 'complete':
+      default:
+        return 'Balance of ₹14,500 settling only upon mockup approval.';
+    }
+  };
   
   // Stored application brief state
   const [savedBooking, setSavedBooking] = useState<BookingRequest | null>(null);
@@ -106,6 +134,7 @@ export default function BookingForm({
       goals,
       customDomainReq,
       designStyle,
+      selectedPlan: selectedPlanId,
       submittedAt: new Date().toLocaleDateString('en-IN', {
         year: 'numeric',
         month: 'long',
@@ -311,7 +340,7 @@ export default function BookingForm({
 
                 <div className="space-y-1 py-1 px-2">
                   <span className="text-xs font-semibold text-slate-800 block">✓ 100% Satisfaction or walk away</span>
-                  <span className="text-[10px] text-slate-500 block leading-none">残り ₹9,499 settling only upon mockup approval.</span>
+                  <span className="text-[10px] text-slate-500 block leading-none">{getPlanBalanceText(selectedPlanId)}</span>
                 </div>
               </div>
 
@@ -372,8 +401,8 @@ export default function BookingForm({
                   {/* Business Name */}
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-slate-700 tracking-wide uppercase flex justify-between">
-                      <span>Business Name / Personal Practice Name *</span>
-                      <span className="text-[10px] text-slate-400 font-normal">e.g. Verma Audit Associates</span>
+                      <span>Consultancy / Practice Name *</span>
+                      <span className="text-[10px] text-slate-400 font-normal">e.g. Royal MBBS Careers</span>
                     </label>
                     <div className="relative">
                       <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -382,11 +411,29 @@ export default function BookingForm({
                         required
                         value={businessName}
                         onChange={(e) => setBusinessName(e.target.value)}
-                        placeholder="e.g. Dr. Amit Roy Physiotherapy"
+                        placeholder="e.g. Apex Abroad Medical Consultant"
                         className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none transition text-slate-800"
                         id="form-business-name"
                       />
                     </div>
+                  </div>
+
+                  {/* Package Plan selector */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 tracking-wide uppercase flex justify-between">
+                      <span>Select Subscription Plan / Package *</span>
+                      <span className="text-[10px] text-blue-600 font-bold">Starts with ₹500 deposit</span>
+                    </label>
+                    <select
+                      value={selectedPlanId}
+                      onChange={(e) => onPlanChange(e.target.value as 'complete' | 'basic' | 'onetime')}
+                      className="w-full px-3.5 py-3 border border-slate-250 bg-slate-50/50 rounded-xl text-sm focus:border-blue-500 focus:outline-none bg-white text-slate-800 font-bold"
+                      id="form-plan-select"
+                    >
+                      <option value="complete">Complete Package (₹600/day | ₹15,000 Monthly Retainer) - Recommended</option>
+                      <option value="basic">Basic Plan (₹300/day | ₹9,000 Billed Monthly)</option>
+                      <option value="onetime">One Time Digital Identity (₹20,000 One-time)</option>
+                    </select>
                   </div>
 
                   {/* Niche Dropdown selector */}
@@ -556,11 +603,14 @@ export default function BookingForm({
                   <div className="bg-slate-50 border border-slate-100 p-4 rounded-xl flex items-center justify-between text-xs">
                     <div>
                       <span className="text-slate-400 uppercase font-mono tracking-wider block">Scope review</span>
-                      <strong className="text-slate-800 font-semibold mt-0.5 block">{businessName} ({NICHES_DATA.find(n=>n.id === niche)?.title})</strong>
+                      <strong className="text-slate-800 font-semibold mt-0.5 block">{businessName || 'Your Consultancy'} ({NICHES_DATA.find(n=>n.id === niche)?.title})</strong>
                     </div>
                     <div className="text-right">
-                      <span className="text-slate-400 block font-mono">Retainer Package</span>
-                      <strong className="text-slate-800 font-bold mt-0.5 block text-sm">₹9,999 (₹500 Deposit)</strong>
+                      <span className="text-slate-400 block font-mono">{getPlanDetails(selectedPlanId).name}</span>
+                      <strong className="text-blue-600 font-bold mt-0.5 block text-xs">
+                        {getPlanDetails(selectedPlanId).cost} / {selectedPlanId === 'onetime' ? 'one-time' : 'day'}
+                      </strong>
+                      <span className="text-[10px] text-slate-500 block mt-0.5 font-medium">{getPlanDetails(selectedPlanId).retainer}</span>
                     </div>
                   </div>
 
