@@ -108,3 +108,29 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
+/* Subtle attention-drawing bounce/wiggle animation for WhatsApp button */
+@keyframes wiggle-bounce {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  12% {
+    transform: translateY(-6px) rotate(-8deg);
+  }
+  24% {
+    transform: translateY(-8px) rotate(8deg);
+  }
+  36% {
+    transform: translateY(-4px) rotate(-6deg);
+  }
+  48% {
+    transform: translateY(-6px) rotate(6deg);
+  }
+  60% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+.animate-wiggle-bounce {
+  animation: wiggle-bounce 2.2s ease-in-out infinite;
+}
+

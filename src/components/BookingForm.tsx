@@ -166,6 +166,7 @@ export default function BookingForm({
   const [savedBooking, setSavedBooking] = useState<BookingRequest | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
   const [showToast, setShowToast] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   // Check for existing booking on load
   useEffect(() => {
@@ -219,12 +220,14 @@ export default function BookingForm({
     setStep(step - 1);
   };
 
-  const handleFormSubmit = (e: FormEvent) => {
+  const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!name || !email || !phone || !businessName) {
       alert('Please fill out all required fields marked with *');
       return;
     }
+
+    setIsSubmitting(true);
 
     const newBooking: BookingRequest = {
       id: 'BD-PROCT-' + Math.floor(100000 + Math.random() * 900000),
@@ -245,6 +248,44 @@ export default function BookingForm({
         minute: '2-digit'
       })
     };
+
+    try {
+      const targetNicheTitle = NICHES_DATA.find(n => n.id === niche)?.title || niche;
+      const targetPlanDetails = getPlanDetails(selectedPlanId);
+
+      // Route form submission data directly to bytedepth@gmail.com
+      const response = await fetch("https://formsubmit.co/ajax/bytedepth@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          _subject: `⚡ ByteDepth Lead: ${businessName} Workspace Created`,
+          _honey: "", // Honeypot to prevent spam bots
+          "Workspace ID": newBooking.id,
+          "Consultancy Name": businessName,
+          "Contact Person": name,
+          "Email Address": email,
+          "WhatsApp Number": phone,
+          "Target Niche / System": targetNicheTitle,
+          "Preferred Layout Style": designStyle,
+          "Custom Domain Requested": customDomainReq ? "Yes" : "No",
+          "Selected Subscription Plan": `${targetPlanDetails.name} (${targetPlanDetails.cost})`,
+          "Plan Billing Term": targetPlanDetails.retainer,
+          "Primary Goals / Project Notes": goals || "None provided",
+          "Submitted Timestamp": newBooking.submittedAt
+        })
+      });
+
+      if (!response.ok) {
+        console.warn('FormSubmit endpoint returned error status:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error transmitting project workspace metadata:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
 
     localStorage.setItem('bytedepth_booking', JSON.stringify(newBooking));
     localStorage.removeItem('bytedepth_booking_draft');
@@ -825,16 +866,25 @@ export default function BookingForm({
 
                     <button
                       type="submit"
-                      disabled={!name || !email || !phone}
+                      disabled={!name || !email || !phone || isSubmitting}
                       className={`px-7 py-3.5 rounded-xl font-bold text-xs inline-flex items-center gap-1.5 cursor-pointer transition text-left shadow-lg ${
-                        name && email && phone 
+                        name && email && phone && !isSubmitting
                           ? 'hover-pulse-btn bg-blue-600 hover:bg-blue-700 hover:shadow-blue-500/20 text-white' 
                           : 'bg-slate-200 text-slate-400 cursor-not-allowed font-medium'
                       }`}
                       id="form-submit-btn"
                     >
-                      <span>Create Project Workspace</span>
-                      <ArrowRight className="w-4.5 h-4.5 text-white/90" />
+                      {isSubmitting ? (
+                        <>
+                          <span className="inline-block animate-spin rounded-full h-3.5 w-3.5 border-2 border-white/30 border-t-white mr-1.5" />
+                          <span>Routing Workspace Data...</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Create Project Workspace</span>
+                          <ArrowRight className="w-4.5 h-4.5 text-white/90" />
+                        </>
+                      )}
                     </button>
                   </div>
 

@@ -27,6 +27,35 @@ export default function App() {
   const [hasActiveBooking, setHasActiveBooking] = useState<boolean>(false);
   const [bookingFormOpen, setBookingFormOpen] = useState<boolean>(false);
   const [selectedPlanId, setSelectedPlanId] = useState<'complete' | 'basic' | 'onetime'>('complete');
+  const [isInactive, setIsInactive] = useState<boolean>(false);
+
+  // Inactivity tracking to trigger subtle WhatsApp attention animation after 30 seconds of no interaction
+  useEffect(() => {
+    let timeoutId: number;
+
+    const resetTimer = () => {
+      setIsInactive(false);
+      window.clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(() => {
+        setIsInactive(true);
+      }, 30000); // 30 seconds of inactivity
+    };
+
+    // Set initial timer
+    resetTimer();
+
+    const events = ['mousemove', 'keydown', 'scroll', 'click', 'touchstart'];
+    events.forEach(event => {
+      window.addEventListener(event, resetTimer, { passive: true });
+    });
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      events.forEach(event => {
+        window.removeEventListener(event, resetTimer);
+      });
+    };
+  }, []);
 
   // Dynamic SEO and OpenGraph meta tags for MBBS Abroad Consultants
   useEffect(() => {
@@ -170,7 +199,7 @@ export default function App() {
         href="https://wa.me/919696775989?text=Hi%20ByteDepth!%20I'm%20an%20MBBS%20Abroad%20Consultant.%20I%20would%20like%20to%20discuss%20a%20high-converting%20student%20recruitment%20web%20system%20and%20professional%20digital%20lead%20gen%20assets%20for%2520my%2520consultancy."
         target="_blank"
         rel="noopener noreferrer"
-        className="hover-pulse-btn fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full p-4 shadow-xl shadow-emerald-500/20 active:scale-95 transition-all flex items-center justify-center gap-2 group border border-emerald-400"
+        className={`hover-pulse-btn fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full p-4 shadow-xl shadow-emerald-500/20 active:scale-95 transition-all flex items-center justify-center gap-2 group border border-emerald-400 ${isInactive ? 'animate-wiggle-bounce' : ''}`}
         aria-label="Chat on WhatsApp"
         title="Chat on WhatsApp with ByteDepth"
       >
