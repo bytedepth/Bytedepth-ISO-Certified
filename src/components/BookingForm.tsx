@@ -47,15 +47,96 @@ export default function BookingForm({
   onClose
 }: BookingFormProps) {
   // Local state for multi-step form wizard
-  const [step, setStep] = useState<number>(1);
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [phone, setPhone] = useState<string>('');
-  const [niche, setNiche] = useState<string>('website-redesign');
-  const [businessName, setBusinessName] = useState<string>('');
-  const [goals, setGoals] = useState<string>('');
-  const [customDomainReq, setCustomDomainReq] = useState<boolean>(true);
-  const [designStyle, setDesignStyle] = useState<'modern-dark' | 'clean-corporate' | 'warm-organic' | 'creative-bold'>('clean-corporate');
+  const [step, setStep] = useState<number>(() => {
+    try {
+      const draft = localStorage.getItem('bytedepth_booking_draft');
+      if (draft) {
+        const parsed = JSON.parse(draft);
+        if (typeof parsed.step === 'number') return parsed.step;
+      }
+    } catch (e) {}
+    return 1;
+  });
+  const [name, setName] = useState<string>(() => {
+    try {
+      const draft = localStorage.getItem('bytedepth_booking_draft');
+      if (draft) {
+        const parsed = JSON.parse(draft);
+        return parsed.name || '';
+      }
+    } catch (e) {}
+    return '';
+  });
+  const [email, setEmail] = useState<string>(() => {
+    try {
+      const draft = localStorage.getItem('bytedepth_booking_draft');
+      if (draft) {
+        const parsed = JSON.parse(draft);
+        return parsed.email || '';
+      }
+    } catch (e) {}
+    return '';
+  });
+  const [phone, setPhone] = useState<string>(() => {
+    try {
+      const draft = localStorage.getItem('bytedepth_booking_draft');
+      if (draft) {
+        const parsed = JSON.parse(draft);
+        return parsed.phone || '';
+      }
+    } catch (e) {}
+    return '';
+  });
+  const [niche, setNiche] = useState<string>(() => {
+    try {
+      const draft = localStorage.getItem('bytedepth_booking_draft');
+      if (draft) {
+        const parsed = JSON.parse(draft);
+        return parsed.niche || 'website-redesign';
+      }
+    } catch (e) {}
+    return 'website-redesign';
+  });
+  const [businessName, setBusinessName] = useState<string>(() => {
+    try {
+      const draft = localStorage.getItem('bytedepth_booking_draft');
+      if (draft) {
+        const parsed = JSON.parse(draft);
+        return parsed.businessName || '';
+      }
+    } catch (e) {}
+    return '';
+  });
+  const [goals, setGoals] = useState<string>(() => {
+    try {
+      const draft = localStorage.getItem('bytedepth_booking_draft');
+      if (draft) {
+        const parsed = JSON.parse(draft);
+        return parsed.goals || '';
+      }
+    } catch (e) {}
+    return '';
+  });
+  const [customDomainReq, setCustomDomainReq] = useState<boolean>(() => {
+    try {
+      const draft = localStorage.getItem('bytedepth_booking_draft');
+      if (draft) {
+        const parsed = JSON.parse(draft);
+        if (parsed.customDomainReq !== undefined) return parsed.customDomainReq;
+      }
+    } catch (e) {}
+    return true;
+  });
+  const [designStyle, setDesignStyle] = useState<'modern-dark' | 'clean-corporate' | 'warm-organic' | 'creative-bold'>(() => {
+    try {
+      const draft = localStorage.getItem('bytedepth_booking_draft');
+      if (draft) {
+        const parsed = JSON.parse(draft);
+        return parsed.designStyle || 'clean-corporate';
+      }
+    } catch (e) {}
+    return 'clean-corporate';
+  });
 
   const getPlanDetails = (planId: 'complete' | 'basic' | 'onetime') => {
     switch(planId) {
@@ -107,6 +188,26 @@ export default function BookingForm({
     }
   }, [selectedNicheId]);
 
+  // Continuously persist the form state as a draft in localStorage
+  useEffect(() => {
+    try {
+      const draftObj = {
+        name,
+        email,
+        phone,
+        niche,
+        businessName,
+        goals,
+        customDomainReq,
+        designStyle,
+        step
+      };
+      localStorage.setItem('bytedepth_booking_draft', JSON.stringify(draftObj));
+    } catch (err) {
+      console.error('Failed to save booking draft:', err);
+    }
+  }, [name, email, phone, niche, businessName, goals, customDomainReq, designStyle, step]);
+
   const handleNextStep = () => {
     if (step === 1) {
       // Validate step 1 fields if needed
@@ -146,6 +247,7 @@ export default function BookingForm({
     };
 
     localStorage.setItem('bytedepth_booking', JSON.stringify(newBooking));
+    localStorage.removeItem('bytedepth_booking_draft');
     setSavedBooking(newBooking);
     onBookingSubmittedStatusChange(true);
     setShowSuccessModal(true);
@@ -165,6 +267,7 @@ export default function BookingForm({
   const handleResetBooking = () => {
     if (confirm('Are you sure you want to discard your draft project brief and start over?')) {
       localStorage.removeItem('bytedepth_booking');
+      localStorage.removeItem('bytedepth_booking_draft');
       setSavedBooking(null);
       onBookingSubmittedStatusChange(false);
       setStep(1);
@@ -207,6 +310,19 @@ export default function BookingForm({
   };
 
   const activeStyleInfo = designStylesConfig[designStyle];
+
+  // Track field completion progress
+  const trackedFields = [
+    { label: 'Consultancy Name', isFilled: !!businessName.trim() },
+    { label: 'Contact Name', isFilled: !!name.trim() },
+    { label: 'Email Address', isFilled: !!email.trim() },
+    { label: 'WhatsApp Number', isFilled: !!phone.trim() }
+  ];
+  
+  const completedFieldsCount = trackedFields.filter(f => f.isFilled).length;
+  const totalFieldsCount = trackedFields.length;
+  const fieldsRemaining = totalFieldsCount - completedFieldsCount;
+  const completionPercentage = (completedFieldsCount / totalFieldsCount) * 100;
 
   return (
     <section id="booking-form" className="py-20 bg-slate-50 font-sans border-b border-gray-100">
@@ -380,15 +496,94 @@ export default function BookingForm({
               </p>
             </div>
 
-            {/* Stepper Progress bar */}
-            <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4 bg-slate-50 select-none">
+            {/* High-fidelity Visual progress stepper bar */}
+            <div className="bg-slate-50/85 px-6 pt-5 pb-4 border-b border-slate-100">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                <div className="flex items-center gap-2">
+                  <div className="h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center text-[10px] font-black text-blue-600">
+                    {completedFieldsCount}
+                  </div>
+                  <span className="text-xs font-bold text-slate-700">
+                    {fieldsRemaining > 0 ? (
+                      <span>Only <strong className="text-blue-600 font-extrabold">{fieldsRemaining} required {fieldsRemaining === 1 ? 'field' : 'fields'}</strong> left to generate your custom portal!</span>
+                    ) : (
+                      <span className="text-emerald-700 flex items-center gap-1 font-bold">✓ Ready to unlock! Submit your workspace draft.</span>
+                    )}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2.5 justify-end sm:justify-start">
+                  <span className="text-[10px] uppercase font-mono bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded font-bold border border-emerald-100 flex items-center gap-1.5 shadow-xs">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Draft Auto-Saved</span>
+                  </span>
+                  <span className="text-xs font-black text-slate-800 font-mono">
+                    {Math.round(completionPercentage)}% Complete
+                  </span>
+                </div>
+              </div>
+
+              {/* Progress Line */}
+              <div className="w-full bg-slate-200/80 h-2 rounded-full overflow-hidden mb-4">
+                <div 
+                  className="bg-gradient-to-r from-blue-500 to-indigo-600 h-full rounded-full transition-all duration-500 ease-out shadow-sm"
+                  style={{ width: `${completionPercentage}%` }}
+                />
+              </div>
+
+              {/* Individual tracked requirements pills */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+                {trackedFields.map((field, idx) => (
+                  <div 
+                    key={idx} 
+                    className={`px-3 py-2 rounded-xl border text-[11px] font-semibold flex items-center justify-between transition-all duration-300 ${
+                      field.isFilled 
+                        ? 'bg-emerald-50/50 border-emerald-100 text-emerald-800' 
+                        : 'bg-white border-slate-200 text-slate-400'
+                    }`}
+                  >
+                    <span className="truncate">{field.label}</span>
+                    {field.isFilled ? (
+                      <span className="bg-emerald-500 text-white rounded-full p-0.5 text-[8px] flex items-center justify-center w-3.5 h-3.5 shrink-0 font-bold">
+                        ✓
+                      </span>
+                    ) : (
+                      <span className="h-1.5 w-1.5 rounded-full bg-slate-350 shrink-0"></span>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Stepper Progress steps */}
+            <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4 bg-slate-50/40 select-none">
               <div className="flex items-center space-x-7 text-xs font-semibold">
-                <span className={`pb-1 ${step === 1 ? 'text-blue-600 border-b-2 border-blue-600' : 'text-slate-400'}`}>
+                <button
+                  type="button"
+                  onClick={() => businessName && setStep(1)}
+                  className={`pb-1 text-left transition-colors cursor-pointer ${
+                    step === 1 
+                      ? 'text-blue-600 border-b-2 border-blue-600 font-bold' 
+                      : businessName 
+                        ? 'text-slate-600 hover:text-blue-500 font-semibold' 
+                        : 'text-slate-300 cursor-not-allowed font-medium'
+                  }`}
+                >
                   1. Brand & Aesthetic Goals
-                </span>
-                <span className={`pb-1 ${step === 2 ? 'text-blue-600 border-b-2 border-blue-600' : 'text-slate-400'}`}>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => businessName && setStep(2)}
+                  disabled={!businessName}
+                  className={`pb-1 text-left transition-colors cursor-pointer ${
+                    step === 2 
+                      ? 'text-blue-600 border-b-2 border-blue-600 font-bold' 
+                      : businessName 
+                        ? 'text-slate-600 hover:text-blue-500 font-semibold' 
+                        : 'text-slate-300 cursor-not-allowed font-medium'
+                  }`}
+                >
                   2. Business Contact Specs
-                </span>
+                </button>
               </div>
               <span className="text-xs font-mono font-bold text-slate-400">
                 Step {step} of 2

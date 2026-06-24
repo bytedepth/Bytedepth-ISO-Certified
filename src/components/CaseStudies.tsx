@@ -228,12 +228,12 @@ export default function CaseStudies() {
         <div className="max-w-5xl mx-auto min-h-[420px] transition-all duration-300">
           {isStudyLoading ? (
             /* Subtle Skeleton Loader Card Component */
-            <div className="bg-slate-850 border border-slate-750 rounded-3xl p-6 md:p-10 shadow-2xl animate-pulse space-y-8">
+            <div className="bg-slate-850 border border-slate-750 rounded-3xl p-6 md:p-10 shadow-2xl animate-pulse shimmer-container space-y-8">
               {/* Header skeleton */}
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-slate-800">
                 <div className="space-y-3 w-full md:w-2/3">
                   <div className="h-3 bg-slate-800 rounded-full w-1/4"></div>
-                  <div className="h-6 bg-slate-850 bg-gradient-to-r from-slate-800 to-slate-750 rounded-full w-3/4"></div>
+                  <div className="h-6 bg-slate-800 rounded-full w-3/4"></div>
                   <div className="h-3 bg-slate-800 rounded-full w-1/3"></div>
                 </div>
                 <div className="h-14 bg-slate-800 rounded-2xl w-32 shrink-0"></div>
@@ -260,8 +260,8 @@ export default function CaseStudies() {
 
                 {/* Metrics skeleton right */}
                 <div className="lg:col-span-5 space-y-4">
-                  <div className="h-28 bg-slate-800/50 rounded-2xl p-4.5"></div>
-                  <div className="h-28 bg-slate-800/80 rounded-2xl p-4.5"></div>
+                  <div className="h-28 bg-slate-850 bg-gradient-to-br from-slate-800 to-slate-850 border border-slate-800/60 rounded-2xl p-4.5"></div>
+                  <div className="h-28 bg-slate-850 bg-gradient-to-br from-slate-800 to-slate-850 border border-slate-800/60 rounded-2xl p-4.5"></div>
                 </div>
               </div>
             </div>

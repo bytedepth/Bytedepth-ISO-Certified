@@ -182,7 +182,7 @@ export default function Testimonials() {
             [1, 2, 3].map((num) => (
               <div 
                 key={num}
-                className="flex-none w-full sm:w-[450px] md:w-[500px] snap-start bg-slate-50 border border-slate-150 p-6 md:p-8 rounded-2xl flex flex-col justify-between h-[230px] animate-pulse"
+                className="flex-none w-full sm:w-[450px] md:w-[500px] snap-start bg-slate-50 border border-slate-150 p-6 md:p-8 rounded-2xl flex flex-col justify-between min-h-[230px] animate-pulse shimmer-container-light"
               >
                 <div className="space-y-4 w-full">
                   <div className="flex justify-between items-center">

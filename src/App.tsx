@@ -23,6 +23,7 @@ import SeoHealthDashboard from './components/SeoHealthDashboard';
 import PartnersIntegrations from './components/PartnersIntegrations';
 import AgencyComparison from './components/AgencyComparison';
 import GlobalReach from './components/GlobalReach';
+import ConsultantSpotlight from './components/ConsultantSpotlight';
 
 export default function App() {
   const [selectedNicheId, setSelectedNicheId] = useState<string>('legal-finance');
@@ -133,6 +134,9 @@ export default function App() {
 
         {/* Real-time slider of client reviews social proofing our delivery */}
         <Testimonials />
+
+        {/* Short high-quality auto-looping background clip showcasing premium consultancy */}
+        <ConsultantSpotlight />
 
         {/* Section 5: Standard pricing package spotlight card */}
         <div id="pricing">
