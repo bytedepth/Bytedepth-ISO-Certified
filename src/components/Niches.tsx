@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { NICHES_DATA } from '../data';
 import { NicheCategory } from '../types';
+import ScrollFadeIn from './ScrollFadeIn';
 
 // Map string names to imported Lucide React icon components
 const IconMap: Record<string, ComponentType<{ className?: string }>> = {
@@ -52,8 +53,8 @@ export default function Niches({ onSelectNicheForBooking }: NichesProps) {
   return (
     <section id="services" className="py-20 bg-white font-sans border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
+        <ScrollFadeIn>
+          {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">
             Complete Digitalization Suite
@@ -266,6 +267,7 @@ export default function Niches({ onSelectNicheForBooking }: NichesProps) {
           </div>
 
         </div>
+        </ScrollFadeIn>
       </div>
     </section>
   );

@@ -6,6 +6,7 @@
 import { useState, useEffect } from 'react';
 import { TrendingUp, ArrowRight, ShieldCheck, Ban, Sparkles } from 'lucide-react';
 import { NICHES_DATA } from '../data';
+import ScrollFadeIn from './ScrollFadeIn';
 
 interface CaseStudyItem {
   id: string;
@@ -25,27 +26,27 @@ const CASE_STUDIES: CaseStudyItem[] = [
   {
     id: 'cs-website',
     nicheId: 'website-redesign',
-    clientName: 'MedEnroll India (Direct Foreign Admission Partner)',
-    location: 'Mumbai, Maharashtra',
+    clientName: 'Fergana Admission (Direct Foreign Admission Partner)',
+    location: 'Delhi',
     metricBefore: '4 leads / mo',
     metricAfter: '42 qualified registration passes / mo',
     metricChange: '10.5x',
     beforeLabel: 'Cluttered, outdated WordPress website showing massive blocky text and no mobile-friendly admission eligibility form.',
     afterLabel: 'ByteDepth Interactive MBBS Admission Portal with a NEET-Score calculator and direct WhatsApp counselor routing.',
-    storyText: 'MedEnroll needed to fill 2026 seats but was losing premium candidates due to a slow, generic website layout. By deploying our interactive country Guides and eligibility forms, they captured hot parent inquiries instantly.',
+    storyText: 'Fergana Admission needed to fill 2026 seats but was losing premium candidates due to a slow, generic website layout. By deploying our interactive country Guides and eligibility forms, they captured hot parent inquiries instantly.',
     featuresAdded: ['NEET Score Admission Calculator', '1-Click WhatsApp Support Widget', 'Foreign Hostel Video Showroom']
   },
   {
     id: 'cs-meta-ads',
     nicheId: 'meta-google-ads',
-    clientName: 'Apex Abroad MBBS Consultancies',
+    clientName: 'AMBIFY Global Admission Consultancy',
     location: 'Delhi NCR',
     metricBefore: 'Junk database cold calls only',
     metricAfter: '120+ NEET-Qualified Student Profiles / mo',
     metricChange: '12x',
     beforeLabel: 'Wasting counselor resources cold calling dry, recycled database sheets sold to multiple agencies.',
     afterLabel: 'Custom Meta Lead campaigns pre-filtering students based on NEET score, budget, and desired target country.',
-    storyText: 'Apex Abroad was drowning in low-intent student calls. We configured targeted Meta Ads targeting serious MBBS aspirants for Russia and Georgia. Inquiries now arrive pre-vetted with score and budget details.',
+    storyText: 'AMBIFY Global Admission Consultancy was drowning in low-intent student calls. We configured targeted Meta Ads targeting serious MBBS aspirants for Russia and Georgia. Inquiries now arrive pre-vetted with score and budget details.',
     featuresAdded: ['Pre-Vetted Meta Lead Forms', 'Real-time Lead CRM Sync', 'Automatic Counselor Alerts']
   },
   {
@@ -168,8 +169,8 @@ export default function CaseStudies() {
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Section Header */}
+        <ScrollFadeIn>
+          {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="text-xs font-bold text-blue-400 uppercase tracking-widest bg-blue-950 border border-blue-900 px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5 shadow-sm">
             <TrendingUp className="w-4 h-4 text-blue-400" />
@@ -360,7 +361,7 @@ export default function CaseStudies() {
             </div>
           )}
         </div>
-
+        </ScrollFadeIn>
       </div>
     </section>
   );

@@ -19,7 +19,7 @@ export default function Footer({ onScrollToSection, onOpenBooking }: FooterProps
         <div className="grid md:grid-cols-12 gap-10 mb-16">
           
           {/* Logo column */}
-          <div className="md:col-span-5 space-y-6">
+          <div className="md:col-span-4 space-y-6">
             <div className="flex items-center space-x-2.5">
               <div className="bg-blue-600 text-white w-9 h-9 rounded-lg font-bold flex items-center justify-center shadow-md">
                 BD
@@ -59,7 +59,7 @@ export default function Footer({ onScrollToSection, onOpenBooking }: FooterProps
           </div>
 
           {/* Quick Links Column */}
-          <div className="md:col-span-3">
+          <div className="md:col-span-2">
             <h4 className="font-bold text-xs uppercase tracking-widest text-slate-400 mb-6">
               Core Navigation
             </h4>
@@ -107,8 +107,32 @@ export default function Footer({ onScrollToSection, onOpenBooking }: FooterProps
             </ul>
           </div>
 
+          {/* Referral Partner Block */}
+          <div className="md:col-span-3 space-y-4">
+            <h4 className="font-bold text-xs uppercase tracking-widest text-slate-400">
+              Agency Referral Program
+            </h4>
+            <div className="bg-indigo-50/40 border border-indigo-100 p-4 rounded-2xl space-y-2">
+              <span className="text-[9px] font-bold text-indigo-700 bg-indigo-100 px-2.5 py-0.5 rounded-full inline-block uppercase font-mono tracking-wider">
+                Partnership Reward
+              </span>
+              <p className="text-xs font-bold text-slate-900 leading-snug">
+                Earn ₹2,500 + 5% recurring retainer discount for referred agencies.
+              </p>
+              <p className="text-[11px] text-slate-500 leading-normal">
+                Refer fellow MBBS consultants or local counseling agents. When they book a custom ByteDepth portal, we credit you directly or deduct it from your ongoing queue.
+              </p>
+              <button 
+                onClick={onOpenBooking}
+                className="text-xs font-bold text-indigo-650 hover:text-indigo-800 inline-flex items-center gap-1.5 mt-1 cursor-pointer"
+              >
+                Join Partner Program <ArrowUpRight className="w-3 h-3 text-indigo-500" />
+              </button>
+            </div>
+          </div>
+
           {/* Corporate Badges & Disclaimers Column */}
-          <div className="md:col-span-4 space-y-6">
+          <div className="md:col-span-3 space-y-6">
             <h4 className="font-bold text-xs uppercase tracking-widest text-slate-400 mb-2">
               Quality Assurance
             </h4>

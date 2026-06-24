@@ -18,6 +18,11 @@ import BookingForm from './components/BookingForm';
 import FaqSection from './components/FaqSection';
 import Footer from './components/Footer';
 import ExitIntentPopup from './components/ExitIntentPopup';
+import ToastContainer from './components/Toast';
+import SeoHealthDashboard from './components/SeoHealthDashboard';
+import PartnersIntegrations from './components/PartnersIntegrations';
+import AgencyComparison from './components/AgencyComparison';
+import GlobalReach from './components/GlobalReach';
 
 export default function App() {
   const [selectedNicheId, setSelectedNicheId] = useState<string>('legal-finance');
@@ -115,6 +120,12 @@ export default function App() {
           <ValueCalculator />
         </div>
 
+        {/* Section 3.5: Agency Build Comparison (ROI & conversion delta) */}
+        <AgencyComparison />
+
+        {/* Section 3b: Interactive SEO Health Dashboard & SERP Simulator */}
+        <SeoHealthDashboard />
+
         {/* Section 4: 3-step Delivery Timeline */}
         <div id="how-it-works">
           <HowItWorks onOpenBooking={handleOpenBookingWizard} />
@@ -130,6 +141,9 @@ export default function App() {
 
         {/* Grid highlighting ISO, SSL compliance and total delivery logs */}
         <TrustSection />
+
+        {/* Section 5c: Partners & Integrations System */}
+        <PartnersIntegrations />
 
         {/* Section 6: Live Booking Scope Manager Wizard & Client Workspace */}
         <div id="booking-form">
@@ -147,6 +161,9 @@ export default function App() {
         <div id="faqs">
           <FaqSection />
         </div>
+
+        {/* Section 7.5: Global Reach trust indicators stats bar */}
+        <GlobalReach />
 
       </main>
 
@@ -173,6 +190,9 @@ export default function App() {
 
       {/* Exit Intent Recovery Popup */}
       <ExitIntentPopup onOpenBooking={handleOpenBookingWizard} />
+
+      {/* Global Toast Notification System */}
+      <ToastContainer />
 
     </div>
   );

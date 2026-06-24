@@ -4,7 +4,8 @@
  */
 
 import { useState } from 'react';
-import { Calculator, Sparkles, Star, TrendingUp } from 'lucide-react';
+import { Calculator, Sparkles, Star, TrendingUp, ArrowRight, ShieldCheck, Award, Zap } from 'lucide-react';
+import { showToast } from './Toast';
 
 export default function ValueCalculator() {
   const [visitorCount, setVisitorCount] = useState<number>(1500);
@@ -76,6 +77,18 @@ export default function ValueCalculator() {
                 step="100"
                 value={visitorCount}
                 onChange={(e) => setVisitorCount(Number(e.target.value))}
+                onMouseUp={() => showToast(
+                  'Traffic Level Set',
+                  `Simulating pipeline performance for ${visitorCount.toLocaleString()} monthly parent & student visitors.`,
+                  'calculator',
+                  3500
+                )}
+                onTouchEnd={() => showToast(
+                  'Traffic Level Set',
+                  `Simulating pipeline performance for ${visitorCount.toLocaleString()} monthly parent & student visitors.`,
+                  'calculator',
+                  3500
+                )}
                 className="w-full accent-blue-500 bg-slate-700 h-2 rounded-lg appearance-none cursor-pointer"
                 id="calc-range-visitors"
               />
@@ -99,6 +112,18 @@ export default function ValueCalculator() {
                 step="5000"
                 value={avgTicketSize}
                 onChange={(e) => setAvgTicketSize(Number(e.target.value))}
+                onMouseUp={() => showToast(
+                  'Retainer Fee Simulated',
+                  `Calculated payback efficiency modeled on ${formatINR(avgTicketSize)} consultancy reward per student.`,
+                  'calculator',
+                  3500
+                )}
+                onTouchEnd={() => showToast(
+                  'Retainer Fee Simulated',
+                  `Calculated payback efficiency modeled on ${formatINR(avgTicketSize)} consultancy reward per student.`,
+                  'calculator',
+                  3500
+                )}
                 className="w-full accent-blue-500 bg-slate-700 h-2 rounded-lg appearance-none cursor-pointer"
                 id="calc-range-ticket"
               />
@@ -122,6 +147,18 @@ export default function ValueCalculator() {
                 step="0.1"
                 value={conversionRate}
                 onChange={(e) => setConversionRate(Number(e.target.value))}
+                onMouseUp={() => showToast(
+                  'Conversion Optimized',
+                  `Targeting a ${conversionRate.toFixed(1)}% NEET registration rate on optimized education landing pages.`,
+                  'calculator',
+                  3500
+                )}
+                onTouchEnd={() => showToast(
+                  'Conversion Optimized',
+                  `Targeting a ${conversionRate.toFixed(1)}% NEET registration rate on optimized education landing pages.`,
+                  'calculator',
+                  3500
+                )}
                 className="w-full accent-emerald-500 bg-slate-700 h-2 rounded-lg appearance-none cursor-pointer"
                 id="calc-range-conversion"
               />
@@ -208,6 +245,95 @@ export default function ValueCalculator() {
               </div>
             </div>
 
+          </div>
+
+        </div>
+
+        {/* Lead Conversion Potential Estimator Sub-Panel */}
+        <div className="mt-12 bg-slate-800/40 border border-slate-700/60 rounded-3xl p-6 md:p-8 max-w-5xl mx-auto text-left relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full filter blur-2xl pointer-events-none"></div>
+          
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-700/60 pb-6 mb-6">
+            <div className="space-y-1.5">
+              <span className="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-widest bg-emerald-950 border border-emerald-900 px-2.5 py-1 rounded-full inline-flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-emerald-400 fill-emerald-400" />
+                INTELLIGENT FORECAST ENGINE
+              </span>
+              <h3 className="text-lg font-bold text-white tracking-tight">
+                Batch Recruitment Conversion Estimator
+              </h3>
+              <p className="text-xs text-slate-400 max-w-xl leading-normal">
+                Based on your simulated traffic of <span className="text-white font-bold">{visitorCount.toLocaleString()}</span> visitors, see how standard templates fail to secure seats compared to our conversion-optimized system.
+              </p>
+            </div>
+            <div className="bg-emerald-950/60 border border-emerald-900/80 p-4 rounded-2xl md:text-right shrink-0">
+              <span className="text-[10px] text-emerald-400 uppercase font-mono block font-bold">Estimated Additional Net Profit</span>
+              <strong className="text-2xl font-black text-emerald-300 font-mono tracking-tight block mt-0.5">
+                {formatINR(Math.max(1, Math.max(2, Math.round((visitorCount * conversionRate) / 100)) - Math.max(1, Math.round(visitorCount * 0.005))) * avgTicketSize)}
+              </strong>
+              <span className="text-[9px] text-slate-400 block mt-0.5 leading-none">Net commission gain from extra batch enrollments</span>
+            </div>
+          </div>
+
+          {/* Progress / Grid comparison bar */}
+          <div className="grid sm:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              <div>
+                <div className="flex justify-between text-xs font-bold mb-1.5">
+                  <span className="text-slate-400">Traditional Web Template (~0.5% rate)</span>
+                  <span className="text-slate-200 font-mono">{Math.max(1, Math.round(visitorCount * 0.005))} serious aspirants</span>
+                </div>
+                <div className="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden">
+                  <div 
+                    className="bg-red-500 h-full rounded-full transition-all duration-500"
+                    style={{ width: `${Math.min(100, Math.max(5, (0.5 / conversionRate) * 100))}%` }}
+                  ></div>
+                </div>
+                <span className="text-[10px] text-slate-500 block mt-1">
+                  High friction, slow speeds, and unoptimized inputs frustrate busy parents.
+                </span>
+              </div>
+
+              <div>
+                <div className="flex justify-between text-xs font-bold mb-1.5">
+                  <span className="text-emerald-400 font-bold">ByteDepth Live Optimized ({conversionRate.toFixed(1)}% target)</span>
+                  <span className="text-emerald-400 font-mono font-black">{Math.max(2, Math.round((visitorCount * conversionRate) / 100))} serious aspirants</span>
+                </div>
+                <div className="w-full bg-slate-900 h-2.5 rounded-full overflow-hidden">
+                  <div 
+                    className="bg-emerald-400 h-full rounded-full transition-all duration-500"
+                    style={{ width: '100%' }}
+                  ></div>
+                </div>
+                <span className="text-[10px] text-slate-500 block mt-1">
+                  NEET calculators, country guides, and direct WhatsApp counseling routes double your capture.
+                </span>
+              </div>
+            </div>
+
+            {/* Metrics Breakdown right panel */}
+            <div className="bg-slate-900/60 rounded-2xl p-4 border border-slate-700/60 flex flex-col justify-between space-y-4">
+              <div className="text-xs text-slate-300 leading-normal space-y-2">
+                <p className="flex items-center gap-2">
+                  <Zap className="w-3.5 h-3.5 text-yellow-400 shrink-0" />
+                  <span>Bytedepth builds systems that achieve payback on <strong>just 1 seat</strong>.</span>
+                </p>
+                <p className="flex items-center gap-2">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>100% HIPAA and NMC data-transfer guidelines pre-configured.</span>
+                </p>
+              </div>
+
+              <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs">
+                <div>
+                  <span className="text-slate-400 block text-[9px] font-mono">EXTRA SEATS GAINED</span>
+                  <strong className="text-white font-extrabold text-sm">{Math.max(1, Math.max(2, Math.round((visitorCount * conversionRate) / 100)) - Math.max(1, Math.round(visitorCount * 0.005)))} Additional Students</strong>
+                </div>
+                <span className="text-[10px] text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-900">
+                  Ready to fill your 2026 batches
+                </span>
+              </div>
+            </div>
           </div>
 
         </div>

@@ -4,6 +4,7 @@
  */
 
 import { useState, useEffect, FormEvent } from 'react';
+import { showToast } from './Toast';
 import { 
   Check, 
   ChevronRight, 
@@ -148,12 +149,14 @@ export default function BookingForm({
     setSavedBooking(newBooking);
     onBookingSubmittedStatusChange(true);
     setShowSuccessModal(true);
-    setShowToast(true);
     
-    // Auto-dismiss floating toast after 8 seconds
-    setTimeout(() => {
-      setShowToast(false);
-    }, 8000);
+    // Call the global unified Toast system
+    showToast(
+      'Workspace Allocated Successfully!',
+      `Staging ref: ${newBooking.id} is registered for your overseas education consultancy. Check your workspace checkpoints.`,
+      'success',
+      6000
+    );
 
     // Transition directly to complete brief view
     setStep(3);
@@ -411,7 +414,7 @@ export default function BookingForm({
                         required
                         value={businessName}
                         onChange={(e) => setBusinessName(e.target.value)}
-                        placeholder="e.g. Apex Abroad Medical Consultant"
+                        placeholder="e.g. AMBIFY Global Admission Consultancy"
                         className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl text-sm focus:border-blue-500 focus:outline-none transition text-slate-800"
                         id="form-business-name"
                       />

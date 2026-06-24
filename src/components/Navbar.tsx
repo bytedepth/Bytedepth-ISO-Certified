@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, ShieldCheck, Phone, Mail, MessageSquare } from 'lucide-react';
 
 interface NavbarProps {
@@ -14,6 +14,19 @@ interface NavbarProps {
 
 export default function Navbar({ onScrollToSection, onOpenBooking, hasActiveBooking }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [queueStatus, setQueueStatus] = useState<'accepting' | 'high-demand'>('accepting');
+
+  useEffect(() => {
+    // Randomize initial status
+    const initialStatus = Math.random() > 0.4 ? 'high-demand' : 'accepting';
+    setQueueStatus(initialStatus);
+
+    const interval = setInterval(() => {
+      setQueueStatus(prev => prev === 'accepting' ? 'high-demand' : 'accepting');
+    }, 6000); // toggle every 6 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md z-50 border-b border-gray-100 font-sans">
@@ -41,6 +54,25 @@ export default function Navbar({ onScrollToSection, onOpenBooking, hasActiveBook
             <div className="hidden sm:flex items-center space-x-1 bg-blue-50 border border-blue-100 text-blue-700 text-[10px] font-semibold px-2 py-0.5 rounded-full">
               <ShieldCheck className="w-3.5 h-3.5 mr-0.5 text-blue-600" />
               <span>ISO 9001:2015</span>
+            </div>
+
+            {/* Build Queue urgency status */}
+            <div className={`hidden lg:flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[9px] font-bold border transition-colors duration-500 ${
+              queueStatus === 'accepting' 
+                ? 'bg-emerald-50 border-emerald-100 text-emerald-800' 
+                : 'bg-amber-50 border-amber-100 text-amber-800'
+            }`}>
+              <span className="relative flex h-1.5 w-1.5">
+                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
+                  queueStatus === 'accepting' ? 'bg-emerald-400' : 'bg-amber-400'
+                }`}></span>
+                <span className={`relative inline-flex rounded-full h-1.5 w-1.5 ${
+                  queueStatus === 'accepting' ? 'bg-emerald-500' : 'bg-amber-500'
+                }`}></span>
+              </span>
+              <span className="font-mono tracking-wider">
+                {queueStatus === 'accepting' ? 'QUEUE: ACCEPTING NEW SPRINT' : 'QUEUE: LIMITED SPREE slots'}
+              </span>
             </div>
           </div>
 
@@ -125,9 +157,19 @@ export default function Navbar({ onScrollToSection, onOpenBooking, hasActiveBook
       {/* Mobile Menu Drawer */}
       {isOpen && (
         <div className="md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-md px-4 pt-3 pb-6 space-y-3 shadow-lg">
-          <div className="flex items-center justify-between py-1 px-2 mb-2 bg-gray-50 rounded-lg">
-            <span className="text-xs text-gray-500 font-medium">Standards Compliant</span>
-            <span className="text-[10px] bg-blue-100 text-blue-700 rounded px-1.5 py-0.5 font-bold uppercase">ISO 9001 Approved</span>
+          <div className="flex flex-col gap-2 p-2 bg-gray-50 rounded-xl mb-2">
+            <div className="flex items-center justify-between">
+              <span className="text-[11px] text-gray-500 font-medium">Standards Compliant</span>
+              <span className="text-[10px] bg-blue-100 text-blue-700 rounded px-1.5 py-0.5 font-bold uppercase">ISO 9001 Approved</span>
+            </div>
+            <div className="flex items-center justify-between pt-1.5 border-t border-gray-200/60">
+              <span className="text-[11px] text-gray-500 font-medium">System Queue Status</span>
+              <span className={`text-[10px] font-bold uppercase px-1.5 py-0.5 rounded ${
+                queueStatus === 'accepting' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
+              }`}>
+                {queueStatus === 'accepting' ? '🟢 Accepting Projects' : '🟡 Limited Slots'}
+              </span>
+            </div>
           </div>
           <button 
             onClick={() => { onScrollToSection('services'); setIsOpen(false); }} 

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Flame, Star, Shield, ArrowRight, Zap, MessageSquare } from 'lucide-react';
+import { Flame, Star, Shield, ArrowRight, Zap, MessageSquare, Award, ShieldCheck, GraduationCap } from 'lucide-react';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -12,7 +12,7 @@ interface HeroProps {
 
 export default function Hero({ onOpenBooking, onScrollToSection }: HeroProps) {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 bg-slate-50 font-sans overflow-hidden">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-24 bg-slate-50 font-sans overflow-hidden">
       {/* Decorative vector background grid layout */}
       <div className="absolute inset-0 z-0 opacity-[0.35] pointer-events-none bg-[radial-gradient(#3b82f6_1.2px,transparent_1.2px)] [background-size:24px_24px]"></div>
       
@@ -42,7 +42,7 @@ export default function Hero({ onOpenBooking, onScrollToSection }: HeroProps) {
         <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.15] text-slate-900 tracking-tight max-w-5xl mx-auto mb-6">
           Best Lead Generation Service For <br />
           <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-            MBBS Abroad Consultants! 🚀📈
+            MBBS Abroad Consultants!
           </span>
         </h1>
 
@@ -99,7 +99,7 @@ export default function Hero({ onOpenBooking, onScrollToSection }: HeroProps) {
         </p>
 
         {/* Quick link trigger */}
-        <div className="mt-14">
+        <div className="mt-14 mb-16">
           <button
             onClick={() => onScrollToSection('services')}
             className="text-xs text-blue-600 font-medium hover:underline inline-flex items-center gap-1.5 cursor-pointer"
@@ -107,6 +107,50 @@ export default function Hero({ onOpenBooking, onScrollToSection }: HeroProps) {
             <span>Explore niche portfolios & interactive mockups</span>
             <span className="text-lg">↓</span>
           </button>
+        </div>
+
+        {/* Verification Badges Row */}
+        <div className="mt-14 pt-8 border-t border-slate-200/60 max-w-5xl mx-auto">
+          <p className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest mb-5">
+            LANDING PAGE COMPLIANCE & VERIFIED STANDARDS
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="flex items-center gap-3.5 bg-white border border-slate-200/50 p-4 rounded-2xl shadow-sm text-left">
+              <div className="p-2.5 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 shrink-0">
+                <Award className="w-5 h-5" />
+              </div>
+              <div>
+                <strong className="text-sm font-bold text-slate-800 block leading-tight">NEET Qualified Leads</strong>
+                <span className="text-xs text-slate-500 mt-0.5 block leading-normal">
+                  Pre-filtered contacts with verified scores and parent phone inputs.
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3.5 bg-white border border-slate-200/50 p-4 rounded-2xl shadow-sm text-left">
+              <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-100 shrink-0">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div>
+                <strong className="text-sm font-bold text-slate-800 block leading-tight">100% Data Compliance</strong>
+                <span className="text-xs text-slate-500 mt-0.5 block leading-normal">
+                  NMC regulations, MCI rules, and ISO data transfer standards.
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3.5 bg-white border border-slate-200/50 p-4 rounded-2xl shadow-sm text-left">
+              <div className="p-2.5 rounded-xl bg-indigo-50 text-indigo-600 border border-indigo-100 shrink-0">
+                <GraduationCap className="w-5 h-5" />
+              </div>
+              <div>
+                <strong className="text-sm font-bold text-slate-800 block leading-tight">Direct University Partner</strong>
+                <span className="text-xs text-slate-500 mt-0.5 block leading-normal">
+                  Official university catalog feeds and direct fee charts integrated.
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
