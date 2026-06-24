@@ -15,6 +15,15 @@ export interface ToastMessage {
   duration: number;
 }
 
+type ToastCallback = (detail: {
+  title: string;
+  message: string;
+  type: 'success' | 'info' | 'warning' | 'calculator' | 'seo';
+  duration: number;
+}) => void;
+
+const listeners = new Set<ToastCallback>();
+
 // Global helper to trigger a toast from anywhere in the application
 export function showToast(
   title: string,
@@ -22,27 +31,26 @@ export function showToast(
   type: 'success' | 'info' | 'warning' | 'calculator' | 'seo' = 'info',
   duration = 4000
 ) {
-  const event = new CustomEvent('bytedepth-toast', {
-    detail: { title, message, type, duration }
+  listeners.forEach((listener) => {
+    try {
+      listener({ title, message, type, duration });
+    } catch (err) {
+      console.error('Error executing toast listener:', err);
+    }
   });
-  window.dispatchEvent(event);
 }
 
 export default function ToastContainer() {
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
 
   useEffect(() => {
-    const handleToastEvent = (e: Event) => {
-      const customEvent = e as CustomEvent<{
-        title: string;
-        message: string;
-        type: 'success' | 'info' | 'warning' | 'calculator' | 'seo';
-        duration: number;
-      }>;
-
-      if (!customEvent.detail) return;
-
-      const { title, message, type, duration } = customEvent.detail;
+    const handleToast = (detail: {
+      title: string;
+      message: string;
+      type: 'success' | 'info' | 'warning' | 'calculator' | 'seo';
+      duration: number;
+    }) => {
+      const { title, message, type, duration } = detail;
       const newToast: ToastMessage = {
         id: Math.random().toString(36).substring(2, 9),
         title,
@@ -61,9 +69,9 @@ export default function ToastContainer() {
       });
     };
 
-    window.addEventListener('bytedepth-toast', handleToastEvent);
+    listeners.add(handleToast);
     return () => {
-      window.removeEventListener('bytedepth-toast', handleToastEvent);
+      listeners.delete(handleToast);
     };
   }, []);
 
@@ -154,7 +162,6 @@ function ToastItem({ toast, styles, onClose }: ToastItemProps) {
 
   return (
     <motion.div
-      layout
       initial={{ opacity: 0, y: 30, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -20, scale: 0.95, transition: { duration: 0.15 } }}

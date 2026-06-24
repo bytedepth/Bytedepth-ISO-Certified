@@ -14,13 +14,11 @@ interface NavbarProps {
 
 export default function Navbar({ onScrollToSection, onOpenBooking, hasActiveBooking }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [queueStatus, setQueueStatus] = useState<'accepting' | 'high-demand'>('accepting');
+  const [queueStatus, setQueueStatus] = useState<'accepting' | 'high-demand'>(() => 
+    Math.random() > 0.4 ? 'high-demand' : 'accepting'
+  );
 
   useEffect(() => {
-    // Randomize initial status
-    const initialStatus = Math.random() > 0.4 ? 'high-demand' : 'accepting';
-    setQueueStatus(initialStatus);
-
     const interval = setInterval(() => {
       setQueueStatus(prev => prev === 'accepting' ? 'high-demand' : 'accepting');
     }, 6000); // toggle every 6 seconds

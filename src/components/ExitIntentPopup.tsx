@@ -55,7 +55,16 @@ export default function ExitIntentPopup({ onOpenBooking }: ExitIntentPopupProps)
     const formattedMsg = encodeURIComponent(textMsg);
     
     setTimeout(() => {
-      window.open(`https://wa.me/919696775989?text=${formattedMsg}`, '_blank');
+      try {
+        window.open(`https://wa.me/919696775989?text=${formattedMsg}`, '_blank');
+      } catch (err) {
+        console.warn('Could not open WhatsApp link from within iframe, redirecting location instead:', err);
+        try {
+          window.location.href = `https://wa.me/919696775989?text=${formattedMsg}`;
+        } catch (innerErr) {
+          console.error('Failed to redirect:', innerErr);
+        }
+      }
       setIsOpen(false);
     }, 1800);
   };
