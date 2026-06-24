@@ -19,7 +19,6 @@ import FaqSection from './components/FaqSection';
 import Footer from './components/Footer';
 import ExitIntentPopup from './components/ExitIntentPopup';
 import ToastContainer from './components/Toast';
-import AgencyComparison from './components/AgencyComparison';
 import GlobalReach from './components/GlobalReach';
 import ConsultantSpotlight from './components/ConsultantSpotlight';
 
@@ -118,9 +117,6 @@ export default function App() {
         <div id="calculator">
           <ValueCalculator />
         </div>
-
-        {/* Section 3.5: Agency Build Comparison (ROI & conversion delta) */}
-        <AgencyComparison />
 
         {/* Section 4: 3-step Delivery Timeline */}
         <div id="how-it-works">
