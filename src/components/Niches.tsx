@@ -3,24 +3,20 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, ComponentType } from 'react';
+import { ComponentType } from 'react';
 import { 
-  Check, 
   Sparkles, 
-  Smartphone, 
-  ExternalLink,
   Laptop,
-  CheckCircle2,
-  Calendar,
-  Contact,
   Megaphone,
   Users,
   MessageSquare,
   Search,
-  Package
+  Package,
+  ArrowRight,
+  ShieldAlert,
+  CheckCircle2
 } from 'lucide-react';
 import { NICHES_DATA } from '../data';
-import { NicheCategory } from '../types';
 import ScrollFadeIn from './ScrollFadeIn';
 
 // Map string names to imported Lucide React icon components
@@ -38,235 +34,110 @@ interface NichesProps {
 }
 
 export default function Niches({ onSelectNicheForBooking }: NichesProps) {
-  const [selectedNicheId, setSelectedNicheId] = useState<string>('website-redesign');
-  const [simulatorInteraction, setSimulatorInteraction] = useState<string | null>(null);
-
-  const activeNiche = NICHES_DATA.find(n => n.id === selectedNicheId) || NICHES_DATA[0];
-
-  const handleSimulateClick = (actionName: string) => {
-    setSimulatorInteraction(`Student clicked: "${actionName}"! A secure pre-filtered admission form instantly overlays here to capture their budget and NEET score.`);
-    setTimeout(() => {
-      setSimulatorInteraction(null);
-    }, 4500);
-  };
-
   return (
     <section id="services" className="py-20 bg-white font-sans border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollFadeIn>
           {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">
-            Complete Digitalization Suite
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3 mb-4">
-            Best Lead Generation & Web Systems For MBBS Abroad Consultants
-          </h2>
-          <p className="text-slate-500 text-base leading-relaxed">
-            Stop relying on slow, unoptimized sites and generic junk lead databases. We build interactive admission websites, run high-yield Meta/Google ads, manage authority social media, and configure bulk WhatsApp automation for 2026 batches.
-          </p>
-        </div>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-xs font-bold text-blue-600 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full">
+              Complete Digitalization Suite
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-3 mb-4">
+              Best Lead Generation & Web Systems For MBBS Abroad Consultants
+            </h2>
+            <p className="text-slate-500 text-base leading-relaxed">
+              Stop relying on slow, unoptimized sites and generic junk lead databases. We build interactive admission websites, run high-yield Meta/Google ads, manage authority social media, and configure bulk WhatsApp automation for 2026 batches.
+            </p>
+          </div>
 
-        {/* Dynamic Split Layout: Niches Grid left, Interactive Simulator right */}
-        <div className="grid lg:grid-cols-12 gap-8 items-start">
-          
-          {/* Left Column: 6 Niche Buttons */}
-          <div className="lg:col-span-5 space-y-4">
-            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 px-1">
-              Select Your Target Practice Niche
-            </h3>
-            
-            <div className="grid sm:grid-cols-2 lg:grid-cols-1 gap-3">
-              {NICHES_DATA.map((niche) => {
-                const IconComponent = IconMap[niche.icon] || Laptop;
-                const isSelected = niche.id === selectedNicheId;
-                
-                return (
-                  <button
-                    key={niche.id}
-                    onClick={() => {
-                        setSelectedNicheId(niche.id);
-                        setSimulatorInteraction(null);
-                    }}
-                    className={`w-full text-left p-4 rounded-xl border transition-all duration-200 cursor-pointer text-slate-800 ${
-                      isSelected 
-                        ? 'border-blue-600 bg-blue-50/70 shadow-sm ring-1 ring-blue-500/20' 
-                        : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'
-                    }`}
-                    id={`niche-card-${niche.id}`}
-                  >
-                    <div className="flex items-center space-x-3.5 mb-2">
-                      <div className={`p-2 rounded-lg ${isSelected ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-500'}`}>
-                        <IconComponent className="w-5 h-5 shrink-0" />
+          {/* Premium Showcase Grid of Niches */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {NICHES_DATA.map((niche) => {
+              const IconComponent = IconMap[niche.icon] || Laptop;
+              
+              return (
+                <div
+                  key={niche.id}
+                  className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs hover:shadow-xl hover:border-blue-500/40 transition-all duration-300 flex flex-col justify-between group"
+                  id={`niche-card-${niche.id}`}
+                >
+                  <div>
+                    {/* Header: Icon & Title */}
+                    <div className="flex items-center gap-4 mb-5">
+                      <div className="p-3 rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                        <IconComponent className="w-6 h-6 shrink-0" />
                       </div>
-                      <span className="font-bold text-sm tracking-tight text-slate-900 block leading-tight">
-                        {niche.title}
-                      </span>
+                      <div>
+                        <span className="text-[10px] uppercase font-mono text-blue-600 font-extrabold tracking-wider block">
+                          {niche.specialty.split(' ')[0]} Focus
+                        </span>
+                        <h3 className="font-black text-base text-slate-900 tracking-tight leading-tight group-hover:text-blue-600 transition-colors">
+                          {niche.title}
+                        </h3>
+                      </div>
                     </div>
-                    <p className="text-xs text-slate-500 line-clamp-2 pl-0.5 leading-relaxed">
+
+                    {/* Specialty Tagline */}
+                    <p className="text-xs font-semibold text-slate-700 mb-4 bg-slate-50 border border-slate-100 px-3 py-2 rounded-lg">
                       {niche.specialty}
                     </p>
-                  </button>
-                );
-              })}
-            </div>
-            
-            {/* Quick Helper Note */}
-            <div className="bg-slate-50 border border-slate-100 p-4 rounded-xl mt-6">
-              <div className="flex items-start space-x-2.5">
-                <Sparkles className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-                <div>
-                  <span className="text-xs font-bold text-slate-800 block">Get a Website Free Audit!</span>
-                  <span className="text-xs text-slate-500 block mt-0.5">
-                    We will audit your existing consultancy website, review your current Google Maps SEO, and inspect your Meta pixel setup completely free. Just specify it in your ₹500 booking wizard!
-                  </span>
+
+                    {/* Short conversion copy */}
+                    <p className="text-xs text-slate-500 leading-relaxed mb-5">
+                      {niche.conversionCopy}
+                    </p>
+
+                    {/* Core Features list */}
+                    <div className="space-y-2 mb-6">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block font-mono">
+                        Key Deliverables:
+                      </span>
+                      {niche.mockPageLayout.features.slice(0, 3).map((feat, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-xs text-slate-600">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                          <span>{feat.replace(/^✓\s*/, '')}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Actions Area */}
+                  <div className="pt-5 border-t border-slate-100 space-y-3">
+                    <div className="flex items-center justify-between text-[11px] font-semibold text-slate-500">
+                      <span>Target Goal:</span>
+                      <span className="text-slate-800 font-bold truncate max-w-[160px]">
+                        {niche.focus.replace('Converting ', '')}
+                      </span>
+                    </div>
+
+                    <button
+                      onClick={() => onSelectNicheForBooking(niche.id)}
+                      className="w-full bg-slate-900 text-white hover:bg-blue-600 text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 group-hover:bg-slate-900 group-hover:hover:bg-blue-600 transition-all duration-300 shadow-sm cursor-pointer"
+                    >
+                      <span>Deploy this layout (₹500 Deposit)</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
 
-          {/* Right Column: Prototype Simulator */}
-          <div className="lg:col-span-7">
-            
-            {/* Simulator Title and Header */}
-            <div className="flex items-center justify-between mb-3 px-1">
-              <div className="flex items-center space-x-2">
-                <Laptop className="w-4 h-4 text-blue-600" />
-                <span className="text-xs font-bold text-slate-700 tracking-tight uppercase">
-                  Live Wireframe Concept Preview
+          {/* Quick Helper Note & Guarantee */}
+          <div className="mt-12 bg-slate-50 border border-slate-200/80 p-5 rounded-2xl max-w-4xl mx-auto">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <div className="p-2 bg-blue-100 text-blue-600 rounded-xl shrink-0">
+                <Sparkles className="w-5 h-5" />
+              </div>
+              <div className="flex-1">
+                <span className="text-sm font-bold text-slate-800 block">Get a Website Free Audit!</span>
+                <span className="text-xs text-slate-500 block mt-0.5 leading-relaxed">
+                  We will audit your existing consultancy website, review your current Google Maps SEO, and inspect your Meta pixel setup completely free. Just select any target system above and specify it in your ₹500 booking wizard!
                 </span>
               </div>
-              <span className="text-[11px] bg-slate-100 text-slate-600 font-mono px-2 py-0.5 rounded">
-                Prototype: {activeNiche.id}.preview
-              </span>
             </div>
-
-            {/* Simulated Browser Container */}
-            <div className="border border-slate-200 rounded-2xl shadow-xl overflow-hidden bg-white">
-              
-              {/* Browser Window Controls Bar */}
-              <div className="bg-slate-100/80 px-4 py-3 border-b border-slate-200 flex items-center justify-between select-none">
-                <div className="flex items-center space-x-1.5 shrink-0">
-                  <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                  <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                </div>
-                
-                {/* Mock Address Bar */}
-                <div className="bg-white text-[11px] font-mono text-slate-400 border border-slate-200 rounded-md px-3 py-1 text-center w-full max-w-sm mx-4 truncate">
-                  https://www.yourpractice.com/
-                </div>
-
-                <div className="flex space-x-1">
-                  <Smartphone className="w-3.5 h-3.5 text-slate-400" />
-                </div>
-              </div>
-
-              {/* Simulated Page Content Viewport */}
-              <div className="p-6 md:p-8 bg-white min-h-[460px] flex flex-col justify-between">
-                
-                {/* 1. Header Portion */}
-                <div className="flex justify-between items-center pb-5 border-b border-dashed border-slate-100">
-                  <div className="flex items-center space-x-2">
-                    <div className="bg-slate-900 text-white w-6 h-6 rounded flex items-center justify-center font-bold text-xs">
-                      P
-                    </div>
-                    <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-                      {activeNiche.title} Group
-                    </span>
-                  </div>
-                  
-                  {/* Dynamic Nav pill */}
-                  <div className="text-[10px] bg-slate-50 text-slate-500 font-semibold px-2.5 py-1 rounded border border-slate-100 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                    <span>Accepting Consultations</span>
-                  </div>
-                </div>
-
-                {/* 2. Page Content Body */}
-                <div className="my-8">
-                  {/* Headline */}
-                  <h4 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight leading-snug mb-3">
-                    {activeNiche.mockPageLayout.heroTitle}
-                  </h4>
-                  
-                  {/* Subtitle */}
-                  <p className="text-xs text-slate-500 leading-relaxed mb-6 max-w-xl">
-                    {activeNiche.mockPageLayout.heroSubtitle}
-                  </p>
-
-                  {/* Trust badge */}
-                  <div className="bg-blue-50/50 rounded-lg p-2.5 border border-blue-50 mb-6 inline-flex">
-                    <span className="text-xs font-semibold text-blue-700 font-mono tracking-tight">
-                      {activeNiche.mockPageLayout.trustStatement}
-                    </span>
-                  </div>
-
-                  {/* Focus Checklist */}
-                  <div className="space-y-2.5 mb-7">
-                    {activeNiche.mockPageLayout.features.map((feat, idx) => (
-                      <div key={idx} className="flex items-start space-x-2 text-xs text-slate-700">
-                        <Check className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
-                        <span>{feat}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Core Action CTA element inside mockup */}
-                  <div className="relative">
-                    <button
-                      onClick={() => handleSimulateClick(activeNiche.mockPageLayout.primaryCTA)}
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-lg text-xs font-bold tracking-tight inline-flex items-center gap-2 shadow-md hover:shadow-lg hover:shadow-blue-500/20 active:scale-95 transition-all text-left"
-                    >
-                      <Calendar className="w-3.5 h-3.5 text-white/90" />
-                      <span>{activeNiche.mockPageLayout.primaryCTA}</span>
-                    </button>
-
-                    {/* Sim Action Popup notification overlays */}
-                    {simulatorInteraction && (
-                      <div className="absolute top-12 left-0 right-0 bg-slate-900 text-white text-xs font-medium p-3.5 rounded-xl border border-slate-800 shadow-2xl z-20 flex items-start gap-2.5 animate-fade-in">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                        <span>{simulatorInteraction}</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* 3. Conversion Mechanism Section (Simulated Footer & Triage) */}
-                <div className="pt-6 border-t border-slate-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
-                  <div>
-                    <span className="text-[10px] text-slate-400 uppercase tracking-widest block font-mono">
-                      PRIMARY SYSTEM FLOW
-                    </span>
-                    <span className="text-[11px] text-slate-800 font-bold block">
-                      Target Goal: {activeNiche.focus}
-                    </span>
-                  </div>
-                  <button 
-                    onClick={() => onSelectNicheForBooking(activeNiche.id)}
-                    className="text-[11px] font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1 group"
-                  >
-                    <span>Deploy this layout (₹500 Deposit)</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-blue-500 group-hover:translate-x-0.5 transition" />
-                  </button>
-                </div>
-
-              </div>
-            </div>
-
-            {/* Strategic Niche Copy Paragraph */}
-            <div className="mt-5 px-3 py-4 bg-slate-50 border border-slate-100 rounded-xl">
-              <span className="text-[10px] bg-slate-200 text-slate-700 font-bold px-2 py-0.5 rounded uppercase tracking-wider mb-2 inline-block">
-                Conversion Strategy
-              </span>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                {activeNiche.conversionCopy}
-              </p>
-            </div>
-
           </div>
-
-        </div>
         </ScrollFadeIn>
       </div>
     </section>
