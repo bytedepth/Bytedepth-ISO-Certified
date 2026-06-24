@@ -165,7 +165,7 @@ export default function BookingForm({
   // Stored application brief state
   const [savedBooking, setSavedBooking] = useState<BookingRequest | null>(null);
   const [showSuccessModal, setShowSuccessModal] = useState<boolean>(false);
-  const [showToast, setShowToast] = useState<boolean>(false);
+  const [localToastOpen, setLocalToastOpen] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   // Check for existing booking on load
@@ -980,7 +980,7 @@ export default function BookingForm({
       )}
 
       {/* Floating React Toast notification */}
-      {showToast && (
+      {localToastOpen && (
         <div className="fixed bottom-6 left-6 z-50 max-w-sm w-full bg-slate-900 border border-slate-800 text-white p-5 rounded-2xl shadow-2xl anim-fade-in flex flex-col gap-3">
           <div className="flex items-start justify-between gap-3">
             <div className="flex items-center gap-2.5">
@@ -993,7 +993,7 @@ export default function BookingForm({
               </div>
             </div>
             <button 
-              onClick={() => setShowToast(false)}
+              onClick={() => setLocalToastOpen(false)}
               className="text-slate-400 hover:text-white transition cursor-pointer p-0.5"
               aria-label="Close notification"
             >
